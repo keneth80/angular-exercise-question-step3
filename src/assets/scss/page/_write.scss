@@ -1,0 +1,70 @@
+// 업로드 페이지
+.write-container {
+  .txt-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 16px;
+    min-height: 200px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    background-color: $gray6;
+    color: $gray4;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    &:hover {
+      border-color: $f-bd-hover-color;
+    }
+  }
+
+  .form-area {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-file {
+    height: 32px;
+  }
+
+  .form-textarea {
+    margin-bottom: 32px;
+    height: 200px;
+    resize: none;
+    @include pc-style {
+      height: calc(100% - 32px - 40px - 32px);
+    }
+  }
+
+  .btn-large {
+    margin-top: auto;
+  }
+  
+  @include pc-style {
+    .form-content {
+      display: flex;
+      justify-content: space-between;
+      padding: 32px;
+      border: 1px solid $border-color;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+    
+    .img-preview-area {
+      flex: 2;
+    }
+    
+    .txt-preview {
+      margin: 0 40px 0 0;
+      min-height: 548px;
+      background-color: $gray7;
+    }
+
+    .img-preview {
+      padding-right: 40px;
+    }
+    
+    .form-area {
+      flex: 1;
+    }
+  }
+}

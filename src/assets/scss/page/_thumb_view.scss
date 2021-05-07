@@ -1,0 +1,115 @@
+// 공통 섬네일 격자 레이아웃
+.thumb-view {
+  .thumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -2px;
+    @include pc-style {
+      margin: -4px;
+    }
+  }
+  .thumb-item {
+    padding: 2px;
+    width: 33.33%;
+    cursor: pointer;
+    @include pc-style {
+      padding: 4px;
+      transition: all 0.25s;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+// 섬네일형 페이지 (마이피드)
+.thumb-container {
+  .my-profile-area {
+    margin-bottom: 16px;
+  }
+  .user-nickname {
+    margin-top: 0;
+  }
+
+  .user-count {
+    padding: 0;
+    background-color: rgba(0,0,0,0);
+  }
+
+  @include mobile-style {
+    .my-profile-area {
+      padding: 0px;
+      border: none;
+      background-color: rgba(0,0,0,0);
+    }
+    .user-img-area {
+      float: left;
+      margin-right: 16px;
+      margin-bottom: 16px;
+    }
+    .user-im {
+      width: 64px;
+    }
+    .user-nickname,
+    .user-desc {
+      text-align: left;
+    }
+    .user-desc {
+      font-size: 13px;
+    }
+    .user-count {
+      margin-top: 16px;
+      justify-content: space-around;
+    }
+    .user-interest-area {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      margin-top: 16px;
+      padding-top: 16px;
+      overflow: auto;
+    }
+    .tag {
+      font-size: 12px;
+    }
+  }
+
+  @include pc-style {
+    .my-profile-area {
+      margin-bottom: 40px;
+    }
+
+    .top-section {
+      display: flex;
+      align-items: center;
+    }
+  
+    .user-img-area {
+      width: 33.33%;
+    }
+  
+    .user-img {
+      width: 150px;
+    }
+  
+    .user-info-area {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 33.33%;
+      padding-left: 16px;
+    }
+  
+    .user-nickname {
+      font-size: 28px;
+      text-align: left;
+    }
+
+    .user-desc {
+      text-align: left;
+    }
+
+    .user-count {
+      justify-content: space-between;
+    }
+  }
+}

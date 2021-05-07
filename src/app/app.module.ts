@@ -6,17 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './common/components/footer/footer.component';
 import { GnbComponent } from './common/components/gnb/gnb.component';
+import { SpinnerComponent } from './common/components/spinner/spinner.component';
+import { BackendModule } from './common/backend/backend.module';
+import { ErrorModule } from './common/error/error.module';
 
 @NgModule({
     declarations: [
         AppComponent,
         FooterComponent,
-        GnbComponent
+        GnbComponent,
+        SpinnerComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        BackendModule,
+        ErrorModule
     ],
     providers: [],
     bootstrap: [AppComponent]

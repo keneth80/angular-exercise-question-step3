@@ -1,1 +1,133 @@
-<p>main works!</p>
+<div id="container" class="container list-container">
+    <div class="common-inner flx-sb">
+        <div class="feed-list">
+            <div class="feed-item-area">
+                <!-- feed-item.html 의 내용 -->
+                <app-feed-item></app-feed-item>
+                <div class="feed-item">
+                    <div class="feed-header">
+                        <a href="../../docs/page/view-thumb.html" class="flx-ac"><img src="../../../assets/images/img-user.png" alt="" class="user-img">잔망루피</a>
+                    </div>
+                    <div class="feed-body">
+                        <img class="feed-img" src="../../../assets/images/img-dummy1.JPG" alt="">
+                        <div class="feed-like">
+                            <button class="btn-like">응원해요</button>
+                            <span class="like-count">첫번째로 응원하기</span>
+                        </div>
+                        <p class="feed-txt"></p>
+                        <p class="feed-date">2021. 4. 17.</p>
+                    </div>
+                    <div class="feed-footer">
+                        <div class="comment-form">
+                            <input class="comment-input" type="text" placeholder="댓글을 입력하세요.">
+                            <button class="btn-comment color-primary" disabled>게시</button>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- 예2) 사진과설명, 좋아요 있는 경우 -->
+                <div class="feed-item">
+                    <div class="feed-header">
+                        <a href="../../docs/page/view-thumb.html" class="flx-ac"><img src="../../../assets/images/img-user.png" alt="" class="user-img">잔망루피</a>
+                    </div>
+                    <div class="feed-body">
+                        <img class="feed-img" src="../../../assets/images/img-dummy2.JPG" alt="">
+                        <div class="feed-like">
+                        <button class="btn-like is-active">응원해요</button>
+                        <span class="like-count">7명이 응원해요</span>
+                        </div>
+                        <p class="feed-txt">미라클모닝에는 역시 독서가 빠질 수 없지📚&nbsp;<a class="tag" href="../../docs/page/search.html">#BOOK</a></p>
+                        <p class="feed-date">2021. 4. 1.</p>
+                    </div>
+                    <div class="feed-footer">
+                        <!-- <div class="comment-area">
+                        <ul class="comment-list">
+                            <li class="comment-item"><a onclick="alert('친구의 페이지로 이동')" class="fw700">유저네임</a><span>댓글</span></li>
+                        </ul>
+                        </div> -->
+                        <div class="comment-form">
+                        <input class="comment-input" type="text" placeholder="댓글을 입력하세요.">
+                        <button class="btn-comment color-primary" disabled>게시</button>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- 예3) 사진과설명, 좋아요, 댓글 있는 경우 -->
+                <div class="feed-item">
+                    <div class="feed-header">
+                        <a href="../../docs/page/view-thumb.html" class="flx-ac"><img src="../../assets/images/img-user.png" alt="" class="user-img">잔망루피</a>
+                    </div>
+                    <div class="feed-body">
+                        <img class="feed-img" src="../../assets/images/img-dummy3.JPG" alt="">
+                        <div class="feed-like">
+                        <button class="btn-like is-active">응원해요</button>
+                        <span class="like-count">10명이 응원해요</span>
+                        </div>
+                        <p class="feed-txt">개발밖에 모르는 바보...✨&nbsp;<a class="tag" href="../../docs/page/search.html">#HTML</a>&nbsp;<a class="tag" href="../../docs/page/search.html">#CSS</a></p>
+                        <p class="feed-date">2021. 3. 24.</p>
+                    </div>
+                    <div class="feed-footer">
+                        <div class="comment-area">
+                        <ul class="comment-list">
+                            <li class="comment-item"><a onclick="alert('친구의 페이지로 이동')" class="fw700">뽀로로</a>&nbsp;<span>그냥 바보가 아니고?</span></li>
+                            <li class="comment-item"><a onclick="alert('친구의 페이지로 이동')" class="fw700">크롱</a>&nbsp;<span>크롱크롱크로오옹</span></li>
+                        </ul>
+                        </div>
+                        <div class="comment-form">
+                        <input class="comment-input" type="text" placeholder="댓글을 입력하세요.">
+                        <button class="btn-comment color-primary" disabled>게시</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination-area">
+                <!-- pagination.html 의 내용 -->
+                <ul class="pagination-list">
+                    <li class="pagination-item first"><button disabled>처음</button></li>
+                    <li class="pagination-item prev"><button disabled>이전</button></li>
+                    
+                    <li class="pagination-item"><a class="pagination-link is-active">1</a></li>
+                    <li class="pagination-item"><a class="pagination-link">2</a></li>
+                    <li class="pagination-item"><a class="pagination-link">3</a></li>
+                    <li class="pagination-item"><a class="pagination-link">4</a></li>
+                    <li class="pagination-item"><a class="pagination-link">5</a></li>
+                    
+                    <li class="pagination-item next"><button>다음</button></li>
+                    <li class="pagination-item last"><button>마지막</button></li>
+                    </ul>
+            </div>
+        </div>
+        
+        <div class="my-profile-area">
+            <!-- my-profile.html -->
+            <div class="top-section">
+                <div class="user-img-area">
+                    <a href="../../docs/page/view-thumb.html">
+                    <img class="user-img" src="../../assets/images/img-user.png" alt="">
+                    </a>
+                </div>
+                
+                <div class="user-info-area">
+                    <p class="user-nickname">잔망루피</p>
+                    <!-- <p class="user-desc">소개말이 없습니다.</p> -->
+                    <p class="user-desc">안녕하세요? 개발 공부중인 루피입니다. 열심히 공부해서 우주최강 개발자가 될거에요! I never GIVE UP!</p>
+                    <div class="user-count">
+                    <p>게시물 <b>4</b></p>
+                    <p>열정지수 <b class="color-primary">200</b></p> 
+                    <p>관심사 <b>6</b></p>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="user-interest-area">
+                <a href="../../docs/page/search.html" class="tag primary">마크업</a>
+                <a href="../../docs/page/search.html" class="tag primary">CSS</a>
+                <a href="../../docs/page/search.html" class="tag">프론트엔드</a>
+                <a href="../../docs/page/search.html" class="tag">Angular</a>
+                <a href="../../docs/page/search.html" class="tag">React</a>
+                <a href="../../docs/page/search.html" class="tag">Vue</a>
+            </div>
+        </div>
+    </div>
+</div>
+    

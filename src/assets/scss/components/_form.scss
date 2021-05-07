@@ -1,0 +1,97 @@
+.form-inner {
+    width: 100%;
+}
+
+.form-container {
+    display: block;
+    margin: 0 auto;
+    padding: 32px 20px;
+    max-width: 360px;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    background-color: #fff;
+    @include pc-style {
+        padding: 32px;
+    }
+}
+
+.form-title { 
+    margin-bottom: 32px;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $gray1;
+}
+
+.form-textarea,
+.form-input {
+    display: block;
+    padding: 0 16px;
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid $f-bd-color;
+    background: $f-bg-color;
+    font-size: 14px;
+    color: $f-txt-color;
+    &::placeholder {            /* Chrome, Safari, Firefox */
+        color: $f-placeholder-color;
+    }
+    &:-ms-input-placeholder {   /* IE, Edge */
+        color: $f-placeholder-color;
+    }
+    &::-ms-clear,
+    &::-ms-reveal {             /* IE Input 태그 안 x 버튼 없애기 */
+        display: none;
+    }
+
+    &:not([readonly]):not(:disabled):not(.error) {
+        &:hover {
+            border-color: $f-bd-hover-color;
+        }
+        
+        &:focus {
+            border-color: $f-bd-focus-color;
+        }
+    }
+
+    // (주의) :read-only는 IE에서 적용되지 않습니다.
+    &[readonly] {
+        background-color: $f-bg-readonly-color;
+        cursor: default;
+    }
+    
+    &:disabled {
+        background-color: $f-bg-disabled-color;
+        color: $f-txt-disabled-color;
+        cursor: not-allowed;
+    }
+
+    &.error {
+        border-color: $error-color;
+        color: $error-color;
+        & + .txt-error {
+            display: block;
+        }
+    }
+}
+
+.form-textarea {
+    padding: 16px;
+    height: 200px;
+}
+
+.txt-error {
+    display: none;
+    margin-top: 8px;
+    font-size: 14px;
+    color: $error-color;
+}
