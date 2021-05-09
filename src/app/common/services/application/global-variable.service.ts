@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from '../../services/base.service';
 
+
+// 설정 정보를 가져오는 함수 및 글로벌 데이터를 저장하는 service
 @Injectable({
     providedIn: 'root'
 })
