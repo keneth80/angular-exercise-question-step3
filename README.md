@@ -50,5 +50,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## User Component create
 Run `ng g component common/components/{componentName}`
 
-## USer Page Module create
+## User Page Module create
 Run `ng g module pages/{pageName} --routing=true && ng g component pages/{pageName} -m={pageName}`
+
+## Install Angular Material (Optional)
+Run `ng add @angular/material`
