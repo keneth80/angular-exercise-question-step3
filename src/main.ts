@@ -9,4 +9,9 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
+    .then(() => {
+      if (console && console.log) {
+          console.log('application load success');
+      }
+    })
     .catch(err => console.error(err));

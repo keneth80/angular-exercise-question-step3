@@ -9,6 +9,8 @@ import { GnbComponent } from './common/components/gnb/gnb.component';
 import { SpinnerComponent } from './common/components/spinner/spinner.component';
 import { BackendModule } from './common/backend/backend.module';
 import { ErrorModule } from './common/error/error.module';
+import { ServicesModule } from './common/services/services.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -21,8 +23,10 @@ import { ErrorModule } from './common/error/error.module';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        ServicesModule,
         BackendModule,
-        ErrorModule
+        ErrorModule,
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
