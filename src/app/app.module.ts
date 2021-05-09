@@ -14,17 +14,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        FooterComponent,
-        GnbComponent,
-        SpinnerComponent
+        AppComponent, // root component
+        FooterComponent, // footer 하단 영역
+        GnbComponent, // 상단 영역
+        SpinnerComponent // 로딩바 componenet
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        ServicesModule,
-        BackendModule,
+        ServicesModule, // 공통 비즈니스 및 controller service module
+        BackendModule, // backend module
         ErrorModule,
         BrowserAnimationsModule
     ],

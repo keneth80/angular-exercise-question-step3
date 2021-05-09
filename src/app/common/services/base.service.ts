@@ -2,6 +2,7 @@ import { Subscription } from 'rxjs';
 // import { AppInjector } from './app/app-injector.service';
 // import { AlertService } from '../component/alert/alert.service';
 
+// service 구현 시 공통되는 영역
 export class BaseService {
     private subscriptions: Subscription;
 
