@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "bundle-report": "webpack-bundle-analyzer dist/angular-exercise/stats.json",
+    "build-prod": "ng build --prod --aot --vendor-chunk=true --common-chunk=true --source-map=true --stats-json",
+    "build-test": "lite-server --baseDir=dist/angular-exercise"
   },
   "private": true,
   "dependencies": {
@@ -39,9 +42,11 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "lite-server": "^2.6.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.1.2"
+    "typescript": "~4.1.2",
+    "webpack-bundle-analyzer": "^3.3.2"
   }
 }
