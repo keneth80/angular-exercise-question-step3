@@ -10,9 +10,7 @@ export class SnackBarComponent implements OnInit {
 
   constructor(
       @Inject(MAT_SNACK_BAR_DATA) public message: string
-  ) {
-      console.log('message : ', message);
-  }
+  ) {}
 
     ngOnInit(): void {
     }
