@@ -1,37 +1,38 @@
 import { ErrorHandler, Injectable, Injector} from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from '../../services/notification/notification.service';
 
-@Injectable()
+
+// Global Error 관리 handler
+@Injectable({
+    providedIn: 'root'
+})
 export class GlobalErrorHandler implements ErrorHandler {
-    constructor() {
+
+    constructor(
+        private notificationService: NotificationService
+    ) {
     }
 
     handleError(error: Error | HttpErrorResponse): void {
-        // const notificationService = this.injector.get(NotificationService);
-        // const errorsService = this.injector.get(ErrorsService);
-        // const router = this.injector.get(Router);
-
+        let errorMessage: any;
         if (error instanceof HttpErrorResponse) {
             // Server error
             if (!navigator.onLine) {
                 // No Internet connection
-                console.log('Please check your internet connection');
-                return;
+                errorMessage = 'Please check your internet connection';
                 // return notificationService.notify('Please check your internet connection');
+            } else {
+                // Http Error
+                errorMessage = error.message;
             }
-            // Http Error
-            console.log(error);
-            // errorsService.log(error).subscribe();
-            // Show notification to the user
-            // return notificationService.notify(`${error.status} - ${error.message}`);
+            console.log('Http Error => ', errorMessage);
         } else {
             // Script Error
+            errorMessage = error;
             console.log(error);
-            // errorsService
-            //     .log(error)
-            //     .subscribe(errorWithContextInfo => {
-            //         router.navigate(['/error'], { queryParams: errorWithContextInfo });
-            //     });
         }
+
+        this.notificationService.notifyMessage(errorMessage);
     }
 }

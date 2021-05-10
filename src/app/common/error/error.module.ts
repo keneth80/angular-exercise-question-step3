@@ -1,12 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { GlobalErrorHandler } from './handler/global-error-handler';
+import { ServicesModule } from '../services/services.module';
 
 @NgModule({
-    declarations: [],
     imports: [
-        CommonModule
+        ServicesModule
     ],
     providers: [
         {

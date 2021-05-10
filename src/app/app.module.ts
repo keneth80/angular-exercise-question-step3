@@ -11,12 +11,15 @@ import { BackendModule } from './common/backend/backend.module';
 import { ErrorModule } from './common/error/error.module';
 import { ServicesModule } from './common/services/services.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './common/modules/shared.module';
+import { SnackBarComponent } from './common/components/snack-bar/snack-bar.component';
 
 @NgModule({
     declarations: [
         AppComponent, // root component
         FooterComponent, // footer 하단 영역
         GnbComponent, // 상단 영역
+        SnackBarComponent,
         SpinnerComponent // 로딩바 componenet
     ],
     imports: [
