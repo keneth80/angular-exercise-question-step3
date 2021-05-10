@@ -17,15 +17,11 @@
 .back-drop {
     z-index: 998;
     position: absolute;
-    top: 50px;
+    top: 64px;
     width: 100%;
-    height: calc(100% - 50px);
+    height: calc(100% - 124px);
     background-color: #ccc;
     opacity: 0.7;
-    display: none;
-}
-
-.back-drop.show {
     display: block;
 }
 

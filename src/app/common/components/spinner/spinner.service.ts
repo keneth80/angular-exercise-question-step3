@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-/**
- * title: Spinner Component controller
- * description: 해당 service로 spinner를 제어한다.
- */
+
+// Spinner Component controller
+// 해당 service로 spinner를 제어한다.
 @Injectable({
     providedIn: 'root'
 })
@@ -24,9 +23,11 @@ export class SpinnerService {
 
     start(): void {
         this.isActive = true;
+        this.status.next(this.isActive);
     }
 
     stop(): void {
         this.isActive = false;
+        this.status.next(this.isActive);
     }
 }

@@ -1,6 +1,5 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { GlobalVariableService } from './application/global-variable.service';
-import { NotificationService } from './notification/notification.service';
 import { SharedModule } from '../modules/shared.module';
 
 
@@ -16,7 +15,6 @@ export function getConfiguration(globalService: GlobalVariableService): any {
     ],
     providers: [
         GlobalVariableService,
-        NotificationService,
         // app이 시작 될 때 해당 함수를 호출한다. 단 return은 Promise 타입이어야 함.
         { provide: APP_INITIALIZER, useFactory: getConfiguration, deps: [GlobalVariableService], multi: true },
     ]

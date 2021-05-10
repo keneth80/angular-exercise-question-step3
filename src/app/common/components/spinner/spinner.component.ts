@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent, NavigationStart } from '@angular/router';
-import { SpinnerService} from './spinner.service';
+import { SpinnerService } from './spinner.service';
 
+// loading bar component
+// spinner service를 controller로 이용한다.
 @Component({
     selector: 'app-spinner',
     templateUrl: './spinner.component.html',
     styleUrls: ['./spinner.component.scss']
 })
-export class SpinnerComponent implements OnInit {
-    active = false;
+export class SpinnerComponent {
+    active = true;
 
     constructor(
         private spinner: SpinnerService,
@@ -21,11 +23,8 @@ export class SpinnerComponent implements OnInit {
             }
         });
         this.spinner.status.subscribe((status: boolean) => {
+            console.log('status : ', status);
             this.active = status;
         });
-    }
-
-    ngOnInit(): void {
-      
     }
 }

@@ -6,6 +6,8 @@ import {
     MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../../common/components/snack-bar/snack-bar.component';
+import { SpinnerService } from '../../common/components/spinner/spinner.service';
+import { delayExcute } from '../../common/utils/rx-util';
 
 // component 나 함수의 example code를 구현하는 페이지 입니다.
 @Component({
@@ -20,7 +22,8 @@ export class ExampleComponent implements OnInit {
 
     constructor(
         private snackBar: MatSnackBar,
-        private http: HttpClient
+        private http: HttpClient,
+        private spinner: SpinnerService
     ) { }
 
     ngOnInit(): void {
@@ -44,6 +47,13 @@ export class ExampleComponent implements OnInit {
             horizontalPosition: this.horizontalPosition,
             verticalPosition: this.verticalPosition,
             data: 'Test!'
+        });
+    }
+
+    showSpinner(): void {
+        this.spinner.start();
+        delayExcute(2000, () => {
+            this.spinner.stop();
         });
     }
 }

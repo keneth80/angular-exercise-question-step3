@@ -13,13 +13,16 @@ import { ServicesModule } from './common/services/services.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './common/modules/shared.module';
 import { SnackBarComponent } from './common/components/snack-bar/snack-bar.component';
+import { SpinnerService } from './common/components/spinner/spinner.service';
+import { NotificationService } from './common/services/notification/notification.service';
 
+// root module로써 최상위에 가장 많이 쓰이면서 꼭 필요한 모듈들을 정의한다.
 @NgModule({
     declarations: [
         AppComponent, // root component
         FooterComponent, // footer 하단 영역
         GnbComponent, // 상단 영역
-        SnackBarComponent,
+        SnackBarComponent, // snack bar component
         SpinnerComponent // 로딩바 componenet
     ],
     imports: [
@@ -31,7 +34,11 @@ import { SnackBarComponent } from './common/components/snack-bar/snack-bar.compo
         ErrorModule,
         BrowserAnimationsModule
     ],
-    providers: [],
+    // 공통으로 자주 쓰이는 Spinner, Notification Serivce는 app module에 한번만 정의한다.
+    providers: [
+        SpinnerService,
+        NotificationService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
