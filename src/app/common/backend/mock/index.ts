@@ -2,6 +2,7 @@ import { User, UserAuth } from '../models/user';
 import { Feed } from '../models/feed';
 import { Reply } from '../models/reply';
 
+// feed를 구현하기 위한 mock data
 export const userAuth: UserAuth[] = JSON.parse(localStorage.getItem('user_ahth') as string) || [
     {
         userId: 'admin',

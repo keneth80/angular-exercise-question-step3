@@ -7,7 +7,8 @@ import { Feed } from '../models/feed';
 import { Reply } from '../models/reply';
 import { userAuth, users, feeds, replys } from '../mock';
 
-
+// backend가 없이 구현이 가능하도록 하는 http interceptor
+// http client 로 호출할 때 호출된 url이 이곳에 정의 되어 있으면 Server로 call 하지 않고 이곳에서 데이터를 처리한다.
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
