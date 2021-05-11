@@ -9,9 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "markup": "lite-server --baseDir='./markup'",
-    "bundle-report": "webpack-bundle-analyzer dist/angular-exercise/stats.json",
     "build-prod": "ng build --prod --aot --vendor-chunk=true --common-chunk=true --source-map=true --stats-json",
-    "build-test": "lite-server --baseDir=dist/angular-exercise"
+    "build-test": "lite-server --baseDir=dist/angular-exercise",
+    "bundle-report": "webpack-bundle-analyzer dist/angular-exercise/stats.json"
   },
   "private": true,
   "dependencies": {
