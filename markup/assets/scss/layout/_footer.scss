@@ -1,0 +1,36 @@
+#footer {
+    height: $m-footer-height;
+    background-color: $gray1;
+    color: $gray7;
+    @include pc-style {
+        height: $footer-height;
+    }
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .company {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .copyright {
+        margin-top: 4px;
+        font-size: 10px;
+    }
+
+    @include pc-style {
+        flex-direction: row;
+        justify-content: space-between;
+        .company {
+            font-size: 16px;
+        }
+        .copyright {
+            font-size: 12px;
+        }
+    }
+}

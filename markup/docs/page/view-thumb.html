@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이피드 (섬네일형)</title>
+    <link rel="shortcut icon" type="image/x-icon" sizes="16x16 32x32 64x64" href="https://asset.fastcampus.co.kr/favicon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" sizes="192x192" href="https://asset.fastcampus.co.kr/favicon/icon-192.png">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body>
+    <nav id="nav"></nav>
+    <div id="container" class="container thumb-container">
+        <div class="common-inner">
+            <div class="my-profile-area"></div>
+            <div class="thumb-view">
+                <ul class="thumb-list">
+                    <li class="thumb-item"><img src="../../../assets/images/img-dummy1.JPG" alt=""></li>
+                    <li class="thumb-item" onclick="openViewModal()"햣><img src="../../../assets/images/img-dummy2.JPG" alt=""></li>
+                    <li class="thumb-item"><img src="../../../assets/images/img-dummy3.JPG" alt=""></li>
+                    <li class="thumb-item"><img src="https://via.placeholder.com/640" alt=""></li>
+                    <li class="thumb-item"><img src="https://via.placeholder.com/640" alt=""></li>
+                    <li class="thumb-item"><img src="https://via.placeholder.com/640" alt=""></li>
+                    <li class="thumb-item"><img src="https://via.placeholder.com/640" alt=""></li>
+                    <li class="thumb-item"><img src="https://via.placeholder.com/640" alt=""></li>
+                    <li class="thumb-item"><img src="https://via.placeholder.com/640" alt=""></li>
+                </ul>
+            </div>
+            <div class="pagination-area"></div>
+        </div>
+    </div>
+    <footer id="footer"></footer>
+
+    <div class="view-modal-area hidden"></div>
+
+    <script src="../../../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../../../assets/js/layout.js"></script>
+    <script>
+        function openViewModal() {
+            $('.view-modal-area').removeClass('hidden');
+        }
+    </script>
+</body>
+</html>

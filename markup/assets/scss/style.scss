@@ -1,0 +1,20 @@
+@import './utils/variables.scss';
+@import './utils/mixin_common.scss';
+@import './utils/mixin_button.scss';
+
+@import './base/reset.scss';
+@import './base/preset.scss';
+
+@import './components/feed_item';
+@import './components/form';
+@import './components/modal';
+@import './components/my_profile';
+@import './components/pagination';
+
+@import './layout/nav';
+@import './layout/footer';
+
+@import './page/list_view';
+@import './page/search';
+@import './page/thumb_view';
+@import './page/write';

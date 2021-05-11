@@ -1,0 +1,72 @@
+.view-modal-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+.dimmed-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-container {
+  margin: auto;
+  overflow: auto;
+  z-index: 1;
+  @include mobile-style {
+    min-height: 100vh;
+    height: 100%;
+    background-color: #fff;
+  }
+  @include pc-style {
+    max-height: calc(100% - 80px);
+  }
+
+  .btn-close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+    z-index: 1;
+    @include mobile-style {
+      fill: $gray1;
+      padding: 4px;
+    }
+    @include pc-style {
+      top: 20px;
+      right: 20px;
+      fill: #fff;
+    }
+  }
+
+  .modal-content {
+    margin: auto;
+    max-width: 500px;
+    background-color: #fff;
+    @include pc-style {
+      width: calc(100% - 40px);
+      border-radius: 4px;
+    }
+
+    .feed-item {
+      margin: 0;
+      border: none;
+    }
+
+    .feed-header {
+      position: sticky;
+      top: 0;
+      border-radius: 4px 4px 0 0;
+      background-color: #fff;
+    }
+  }
+}

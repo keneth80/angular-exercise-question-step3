@@ -1,0 +1,78 @@
+// common
+.my-profile-area {
+  padding: 32px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  background-color: #fff;
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .user-img {
+    display: block;
+    margin: 0 auto;
+    width: 80px;
+    border-radius: 100%;
+  }
+
+  .user-nickname {
+    display: block;
+    margin-top: 24px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .user-desc {
+    margin-top: 8px;
+    font-size: 14px;
+    color: $gray3;
+    text-align: center;
+    word-break: keep-all;
+  }
+
+  .user-count {
+    display: flex;
+    margin-top: 32px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+  }
+
+  .user-interest-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: -6px;
+    padding-top: 24px;
+    border-top: 1px dashed $border-color;
+  }
+
+  .tag {
+    &::before {
+      content: '#';
+    }
+    flex-shrink: 0;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: $gray6;
+    transition: background-color 0.25s;
+    &:hover {
+      background-color: mix(black, $gray6, 8%);
+    }
+    &.primary {
+      background-color: $primary;
+      color: #fff;
+      &:hover {
+        background-color: mix(black, $primary, 8%);
+      }
+    }
+  }
+}

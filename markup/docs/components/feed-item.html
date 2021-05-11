@@ -1,0 +1,94 @@
+
+<!-- 예1) 사진만 있는 경우 -->
+<div class="feed-item">
+  <div class="feed-header">
+      <a href="../../docs/page/view-thumb.html" class="flx-ac"><img src="../../../assets/images/img-user.png" alt="" class="user-img">잔망루피</a>
+  </div>
+  <div class="feed-body">
+      <img class="feed-img" src="../../../assets/images/img-dummy1.JPG" alt="">
+      <div class="feed-like">
+          <button class="btn-like">응원해요</button>
+          <span class="like-count">첫번째로 응원하기</span>
+      </div>
+      <p class="feed-txt"></p>
+      <p class="feed-date">2021. 4. 17.</p>
+  </div>
+  <div class="feed-footer">
+      <div class="comment-form">
+          <input class="comment-input" type="text" placeholder="댓글을 입력하세요.">
+          <button class="btn-comment color-primary" disabled>게시</button>
+      </div>
+  </div>
+</div>
+
+<!-- 예2) 사진과설명, 좋아요 있는 경우 -->
+<div class="feed-item">
+  <div class="feed-header">
+    <a href="../../docs/page/view-thumb.html" class="flx-ac"><img src="../../../assets/images/img-user.png" alt="" class="user-img">잔망루피</a>
+  </div>
+  <div class="feed-body">
+    <img class="feed-img" src="../../../assets/images/img-dummy2.JPG" alt="">
+    <div class="feed-like">
+      <button class="btn-like is-active">응원해요</button>
+      <span class="like-count">7명이 응원해요</span>
+    </div>
+    <p class="feed-txt">미라클모닝에는 역시 독서가 빠질 수 없지📚&nbsp;<a class="tag" href="../../docs/page/search.html">#BOOK</a></p>
+    <p class="feed-date">2021. 4. 1.</p>
+  </div>
+  <div class="feed-footer">
+    <!-- <div class="comment-area">
+      <ul class="comment-list">
+        <li class="comment-item"><a onclick="alert('친구의 페이지로 이동')" class="fw700">유저네임</a><span>댓글</span></li>
+      </ul>
+    </div> -->
+    <div class="comment-form">
+      <input class="comment-input" type="text" placeholder="댓글을 입력하세요.">
+      <button class="btn-comment color-primary" disabled>게시</button>
+    </div>
+  </div>
+</div>
+
+<!-- 예3) 사진과설명, 좋아요, 댓글 있는 경우 -->
+<div class="feed-item">
+  <div class="feed-header">
+    <a href="../../docs/page/view-thumb.html" class="flx-ac"><img src="../../assets/images/img-user.png" alt="" class="user-img">잔망루피</a>
+  </div>
+  <div class="feed-body">
+    <img class="feed-img" src="../../assets/images/img-dummy3.JPG" alt="">
+    <div class="feed-like">
+      <button class="btn-like is-active">응원해요</button>
+      <span class="like-count">10명이 응원해요</span>
+    </div>
+    <p class="feed-txt">개발밖에 모르는 바보...✨&nbsp;<a class="tag" href="../../docs/page/search.html">#HTML</a>&nbsp;<a class="tag" href="../../docs/page/search.html">#CSS</a></p>
+    <p class="feed-date">2021. 3. 24.</p>
+  </div>
+  <div class="feed-footer">
+    <div class="comment-area">
+      <ul class="comment-list">
+        <li class="comment-item"><a onclick="alert('친구의 페이지로 이동')" class="fw700">뽀로로</a>&nbsp;<span>그냥 바보가 아니고?</span></li>
+        <li class="comment-item"><a onclick="alert('친구의 페이지로 이동')" class="fw700">크롱</a>&nbsp;<span>크롱크롱크로오옹</span></li>
+      </ul>
+    </div>
+    <div class="comment-form">
+      <input class="comment-input" type="text" placeholder="댓글을 입력하세요.">
+      <button class="btn-comment color-primary" disabled>게시</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // like
+  $('.btn-like').click(function() {
+      $(this).toggleClass('is-active');
+  });
+
+  // comment input
+  $('.comment-input').keyup(function() {
+    if($(this).val().length > 0) {
+      $('.btn-comment').prop('disabled', false);
+    }
+    else {
+      $('.btn-comment').prop('disabled', true);
+    }
+  });
+</script>

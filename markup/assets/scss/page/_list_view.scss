@@ -1,0 +1,28 @@
+// 목록형 페이지 (전체피드)
+.list-container {
+  .my-profile-area {
+    display: none;
+    width: 100%;
+    @include wide-style {
+      position: sticky;
+      top: 104px;
+      display: block;
+      margin-left: 40px;
+      .user-nickname {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .feed-list {
+    flex-shrink: 0;
+    margin: 0 auto;
+    max-width: 580px;
+    width: 100%;
+    margin-top: -32px;
+    @include wide-style {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

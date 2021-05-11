@@ -1,0 +1,30 @@
+.pagination-list {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  @include pc-style {
+    margin-top: 60px;
+  }
+}
+
+.pagination-item {
+  margin: 0 8px;
+  &.first, &.prev, &.next, &.last {
+    flex-shrink: 0;
+    button:not(:disabled):hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.pagination-link {
+  transition: all 0.35s;
+  &:hover {
+    text-decoration: underline;
+  }
+  &.is-active {
+    font-weight: 700;
+    color: $primary;
+  }
+}
