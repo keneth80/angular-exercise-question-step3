@@ -23,7 +23,6 @@ export class SpinnerComponent {
             }
         });
         this.spinner.status.subscribe((status: boolean) => {
-            console.log('status : ', status);
             this.active = status;
         });
     }
