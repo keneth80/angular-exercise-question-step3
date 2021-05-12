@@ -22,11 +22,10 @@ export class NotificationService {
     ) { }
 
     notifyMessage(message: string): void {
-        // server error같은 경우 error에 의해서 ng zone으로 error를 보내 체크하는데
-        // 이때 Snack Bar component로 보내야 할 이벤트가 제대로 가지 않아 엉뚱하게 동작한다.
-        // 해서 zone의 run 콜백을 이용하여 zone event가 발생한 후 snack bar component를 동작하게 했음.
+        // angular에서 일부 서드파티 라이브러리를 사용할 때 변화를 감지 못할 떄가 있고
+        // 또, 비동기로 발생하는 변경들은 angular 컴포넌트가 변화를 감지하지 하지 못한다.
+        // 이때, 해결책은 Angular zone 내부에서 콜백을 실행하도록 하는 것이다.
         this.zone.run(() => {
-            console.log('run');
             this.snackBar.openFromComponent(SnackBarComponent, {
                 duration: this.durationInSeconds * 1000,
                 horizontalPosition: this.horizontalPosition,
