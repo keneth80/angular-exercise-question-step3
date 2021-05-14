@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.subscription.add(
             this.authService.userModel$.subscribe((userModel: UserProfileModel) => {
                 if (userModel.userEmail) {
+                    console.log('userModel : ', userModel);
                     this.spinner.stop();
                     this.router.navigate(['/main']);
                 }

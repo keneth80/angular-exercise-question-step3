@@ -15,7 +15,7 @@ export const userMapperForUserProfile = (user: User): UserProfileModel => {
         userDesciption: user.desciption,
         feedCount: user.feedCount,
         passionIndex: user.passionIndex,
-        createdAt: formatDate(user.created, 'YYYY년 M월 d일 (E) aa H:mm', 'en_US'),
+        createdAt: formatDate(user.created, 'YYYY년 M월 d일 (E) aa H:mm', 'ko'),
         likeFeeds: user.likeFeeds,
         tags: user.tags,
         topTags: user.topTags

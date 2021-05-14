@@ -1,6 +1,9 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+
+import localeKo from '@angular/common/locales/ko';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +18,8 @@ import { SharedModule } from './common/modules/shared.module';
 import { SnackBarComponent } from './common/components/snack-bar/snack-bar.component';
 import { SpinnerService } from './common/components/spinner/spinner.service';
 import { NotificationService } from './common/services/notification/notification.service';
+
+registerLocaleData(localeKo);
 
 // root module로써 최상위에 가장 많이 쓰이면서 꼭 필요한 모듈들을 정의한다.
 @NgModule({
@@ -37,7 +42,10 @@ import { NotificationService } from './common/services/notification/notification
     // 공통으로 자주 쓰이는 Spinner, Notification Serivce는 app module에 한번만 정의한다.
     providers: [
         SpinnerService,
-        NotificationService
+        NotificationService,
+        {
+            provide: LOCALE_ID, useValue: 'ko'
+        }
     ],
     bootstrap: [AppComponent]
 })

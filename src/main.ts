@@ -8,9 +8,7 @@ if (environment.production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule, {
-    providers: [{provide: LOCALE_ID, useValue: 'ko-KR'}]
-})
+platformBrowserDynamic().bootstrapModule(AppModule)
     .then(() => {
       if (console && console.log) {
           console.log('application load success');
