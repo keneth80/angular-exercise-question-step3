@@ -1,9 +1,10 @@
 export interface UserProfileModel {
     id?: number;
+    userNickName?: string; // 유저 닉네임
     userEmail?: string;
-    userImage?: string; // 유저 이미지 (선택) : 기본이미지 제공
-    userName?: string; // 유저 닉네임 (필수)
-    userDesciption?: string; // 유저 소개글 (선택)
+    userImage?: string; // 유저 이미지
+    userName?: string; // 유저 네임
+    userDesciption?: string; // 유저 소개글
     feedCount?: number; // 게시글 : 업로드한 총 게시글 개수
     passionIndex?: number; // 열정지수 = 총 게시물 * 10 + 총 좋아요 개수*10 입니다. ex) 열정지수 200 = 3*10 + 17*10
     createdAt?: string;

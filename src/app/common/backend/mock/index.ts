@@ -5,11 +5,11 @@ import { Reply } from '../models/reply';
 // feed를 구현하기 위한 mock data
 export const userAuth: UserAuth[] = JSON.parse(localStorage.getItem('user_ahth') as string) || [
     {
-        userId: 'admin',
+        email: 'admin@admin.com',
         password: '1',
     },
     {
-        userId: 'kenneth',
+        email: 'kenneth@naver.com',
         password: '1',
     },
 ];
@@ -17,7 +17,7 @@ export const userAuth: UserAuth[] = JSON.parse(localStorage.getItem('user_ahth')
 export const users: User[] = JSON.parse(localStorage.getItem('users') as string) || [
     {
         id: 0,
-        userId: 'admin',
+        nickName: '천하무적 루피',
         email: 'admin@admin.com',
         image: '',
         name: '천하무적 루피',
@@ -31,7 +31,7 @@ export const users: User[] = JSON.parse(localStorage.getItem('users') as string)
     },
     {
         id: 1,
-        userId: 'kenneth',
+        nickName: 'kenneth',
         email: 'kenneth@kenneth.com',
         image: '',
         name: 'Kenneth',

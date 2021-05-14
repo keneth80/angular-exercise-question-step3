@@ -29,8 +29,7 @@ export class GlobalErrorHandler implements ErrorHandler {
             console.log('Http Error => ', errorMessage);
         } else {
             // Script Error
-            errorMessage = error;
-            console.log(error);
+            errorMessage = error.message || error;
         }
 
         this.notificationService.notifyMessage(errorMessage);

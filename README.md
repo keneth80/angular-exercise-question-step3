@@ -115,11 +115,11 @@ Q. 구글에서 개발한 frontend framework인 angular로 web application을 �
 
 ## User Component create command
 
-Run `ng g component common/components/{componentName}`
+Run `ng generate component common/components/{componentName}`
 
 ## User Page Module create command
 
-Run `ng g module pages/{pageName} --routing=true && ng g component pages/{pageName} -m={pageName}`
+Run `ng generate module pages/{pageName} --routing=true && ng g component pages/{pageName} -m={pageName}`
 
 ## Install Angular Material (Optional)
 

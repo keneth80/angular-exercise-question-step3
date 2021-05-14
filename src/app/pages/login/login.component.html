@@ -1,0 +1,43 @@
+<div id="container" class="container flx-jc">
+    <div class="form-inner">
+        <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <fieldset>
+                <legend>로그인</legend>
+
+                <h1 class="form-title">로그인</h1>
+
+                <div class="form-group">
+                    <!-- input 에러있는 경우 클래스명 error 추가 -->
+                    <input
+                        class="form-input"
+                        type="email"
+                        placeholder="이메일 주소"
+                        aria-label="이메일 주소 입력창"
+                        formControlName="email"
+                        required>
+                    <div *ngIf="formItems.email.invalid && (formItems.email.dirty || formItems.email.touched)">
+                        <p class="txt-error" *ngIf="formItems.email.errors?.required">이메일을 입력해주세요.</p>
+                        <p class="txt-error" *ngIf="formItems.email.errors?.email">이메일을 형식이 아닙니다.</p>
+                    </div>
+                </div>
+
+                <div class="form-group mgt8">
+                    <input
+                        class="form-input"
+                        type="password"
+                        placeholder="비밀번호"
+                        aria-label="비밀번호 입력창"
+                        formControlName="password"
+                        required>
+                    <div *ngIf="formItems.password.invalid && (formItems.password.dirty || formItems.password.touched)">
+                        <p class="txt-error" *ngIf="formItems.password.errors?.required">비밀번호를 입력해주세요.</p>
+                    </div>
+                </div>
+
+                <button class="btn-large btn-solid-primary mgt32">로그인</button>
+            </fieldset>
+        </form>
+
+        <p class="mgt16 color-gray3 center">계정이 없으신가요? <a href="../../docs/page/signup.html" class="underline">회원가입</a></p>
+    </div>
+</div>

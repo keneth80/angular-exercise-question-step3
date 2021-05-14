@@ -1,21 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FakeBackendInterceptor } from './interceptor/fake-backend.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { fakeBackendProvider } from './interceptor/fake-backend.interceptor';
+import { FeedApiService } from './api/feed-api.service';
 
 
 
 @NgModule({
-    declarations: [],
-    imports: [
-        CommonModule
-    ],
     providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: FakeBackendInterceptor,
-            multi: true
-        }
+        fakeBackendProvider,
+        FeedApiService
     ]
 })
 export class BackendModule { }

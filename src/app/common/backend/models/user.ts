@@ -1,14 +1,14 @@
 export interface UserAuth {
-    userId: string;
+    email: string;
     password: string;
 }
 
 export interface User {
     id: number;
-    userId: string;
+    nickName: string; // 유저 닉네임 (필수)
     email: string;
     image?: string; // 유저 이미지 (선택) : 기본이미지 제공
-    name: string; // 유저 닉네임 (필수)
+    name: string; // 유저 네임 (필수)
     desciption?: string; // 유저 소개글 (선택)
     feedCount: number; // 게시글 : 업로드한 총 게시글 개수
     passionIndex: number; // 열정지수 = 총 게시물 * 10 + 총 좋아요 개수*10 입니다. ex) 열정지수 200 = 3*10 + 17*10

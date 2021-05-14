@@ -9,14 +9,16 @@ import { userAuth, users, feeds, replys } from '../mock';
 
 // backend가 없이 구현이 가능하도록 하는 http interceptor
 // http client 로 호출할 때 호출된 url이 이곳에 정의 되어 있으면 Server로 call 하지 않고 이곳에서 데이터를 처리한다.
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
 
         const handleRoute = () => {
             switch (true) {
-                case url.endsWith('/users/authenticate') && method === 'POST':
+                case url.endsWith('/authenticate') && method === 'POST':
                     return authenticate();
                 case url.endsWith('/users/register') && method === 'POST':
                     return register();
@@ -32,16 +34,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             }
         };
 
+        console.log('FakeBackendInterceptor : ', request);
+
         // route functions
 
         const authenticate = () => {
-            const { userId, password } = body;
-            const user = userAuth.find((userObj: UserAuth) => userObj.userId === userId && userObj.password === password);
+            const { email, password } = body;
+            console.log('body : ', body);
+            const user = userAuth.find((userObj: UserAuth) => userObj.email === email && userObj.password === password);
 
             if (!user) return error('Email or password is incorrect');
 
-            const userInfo = users.find((userObj: User) => userObj.userId === user.userId);
-            return ok(userInfo);
+            const userInfo = users.find((userObj: User) => userObj.email === user.email);
+            return ok({
+                status: 200,
+                statusText: 'ok',
+                data: userInfo
+            });
         };
 
         const register = () => {
@@ -91,7 +100,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         };
 
         const error = (message: any) => {
-            return throwError({ error: { message } });
+            return throwError({ message });
         };
 
         const unauthorized = () => {
