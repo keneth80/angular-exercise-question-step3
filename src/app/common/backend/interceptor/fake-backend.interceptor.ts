@@ -20,10 +20,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             switch (true) {
                 case url.endsWith('/authenticate') && method === 'POST':
                     return authenticate();
-                case url.endsWith('/users/register') && method === 'POST':
+                case url.endsWith('/register') && method === 'POST':
                     return register();
                 case url.endsWith('/feed/register') && method === 'POST':
                     return registerFeed();
+                case url.match(/\/user\/.*/) && method === 'GET':
+                    return getUser();
                 case url.endsWith('/feeds') && method === 'GET':
                     return getFeeds();
                 case url.endsWith('/search') && method === 'GET':
@@ -63,14 +65,26 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             user.id = users.length ? Math.max(...users.map((userObj: User) => userObj.id)) + 1 : 1;
             user.created = new Date().getTime();
             users.push(user);
-            localStorage.setItem('users', JSON.stringify(users));
+            // localStorage.setItem('users', JSON.stringify(users));
             return ok();
         };
 
         const getFeeds = () => {
-            if (!isLoggedIn()) return unauthorized();
+            return ok({
+                status: 200,
+                statusText: 'ok',
+                data: feeds
+            });
+        };
 
-            return ok(feeds);
+        const getUser = () => {
+            const urlValues = url.split('/');
+            const userId = urlValues[urlValues.length - 1];
+            return ok({
+                status: 200,
+                statusText: 'ok',
+                data: users.find((user: User) => user.nickName === userId)
+            });
         };
 
         const searchFeeds = () => {

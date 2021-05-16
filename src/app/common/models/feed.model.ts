@@ -1,6 +1,6 @@
 export interface FeedModel {
     id?: number;
-    userId?: string;
+    userId?: number;
     userName?: string;
     content?: string;
     createdAt?: string;

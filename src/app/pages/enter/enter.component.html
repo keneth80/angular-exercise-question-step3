@@ -1,0 +1,76 @@
+<div id="container" class="container flx-jc">
+    <div class="form-inner">
+        <form class="form-container" [formGroup]="enterForm" (ngSubmit)="onEnterSubmit()">
+            <fieldset>
+                <legend>회원가입</legend>
+
+                <h1 class="form-title">회원가입</h1>
+
+                <div class="form-group">
+                    <input class="form-input"
+                        type="email"
+                        placeholder="이메일 주소"
+                        aria-label="이메일 주소 입력창"
+                        formControlName="email"
+                        required>
+                    <div *ngIf="formItems.email.invalid && (formItems.email.dirty || formItems.email.touched)">
+                        <p class="txt-error" *ngIf="formItems.email.errors?.required">이메일을 입력해주세요.</p>
+                        <p class="txt-error" *ngIf="formItems.email.errors?.email">이메일을 형식이 아닙니다.</p>
+                    </div>
+                </div>
+
+                <div class="form-group mgt8">
+                    <input class="form-input"
+                        type="text"
+                        placeholder="이름"
+                        aria-label="이름 입력창"
+                        formControlName="name"
+                        required>
+                    <div *ngIf="formItems.name.invalid && (formItems.name.dirty || formItems.name.touched)">
+                        <p class="txt-error" *ngIf="formItems.name.errors?.required">이름을 입력해주세요.</p>
+                    </div>
+                </div>
+
+                <div class="form-group mgt8">
+                    <input class="form-input"
+                        type="text"
+                        placeholder="닉네임"
+                        aria-label="닉네임 입력창"
+                        formControlName="nickName"
+                        required>
+                    <div *ngIf="formItems.nickName.invalid && (formItems.nickName.dirty || formItems.nickName.touched)">
+                        <p class="txt-error" *ngIf="formItems.nickName.errors?.required">닉네임을 입력해주세요.</p>
+                    </div>
+                </div>
+
+                <div class="form-group mgt8">
+                    <input class="form-input"
+                        type="password"
+                        placeholder="비밀번호"
+                        aria-label="비밀번호 입력창"
+                        formControlName="password"
+                        required>
+                    <div *ngIf="formItems.password.invalid && (formItems.password.dirty || formItems.password.touched)">
+                        <p class="txt-error" *ngIf="formItems.password.errors?.required">비밀번호를 입력해주세요.</p>
+                    </div>
+                </div>
+                <div class="form-group mgt8">
+                    <input class="form-input"
+                        type="password"
+                        placeholder="비밀번호 확인"
+                        aria-label="비밀번호 확인"
+                        formControlName="confirmPassword"
+                        required>
+                    <div *ngIf="formItems.confirmPassword.invalid && (formItems.confirmPassword.dirty || formItems.confirmPassword.touched)">
+                        <p class="txt-error" *ngIf="formItems.confirmPassword.errors?.required">비밀번호를 다시 입력해주세요.</p>
+                        <p class="txt-error" *ngIf="formItems.confirmPassword.errors?.confirmValidator">비밀번호가 일치해야합니다.</p>
+                    </div>
+                </div>
+
+                <button class="btn-large btn-solid-primary mgt32">회원가입</button>
+            </fieldset>
+        </form>
+
+        <p class="mgt16 color-gray3 center">이미 계정이 있으신가요? <a [routerLink]="['/login']" class="underline">로그인</a></p>
+    </div>
+</div>

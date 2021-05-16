@@ -4,16 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/main',
+        redirectTo: '/login',
         pathMatch: 'full'
     },
     {
-        path: 'main',
+        path: 'home/:userId',
         loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
     },
     {
         path: 'login',
         loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+    },
+    {
+        path: 'enter',
+        loadChildren: () => import('./pages/enter/enter.module').then(m => m.EnterModule)
     },
     {
         path: 'example',

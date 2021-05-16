@@ -32,6 +32,8 @@ export class GlobalErrorHandler implements ErrorHandler {
             errorMessage = error.message || error;
         }
 
+        console.log('error : ', error);
+
         this.notificationService.notifyMessage(errorMessage);
     }
 }

@@ -1,6 +1,6 @@
 export interface Feed {
     id: number;
-    userId: string;
+    userId: number;
     userName: string;
     content: string;
     created: number;

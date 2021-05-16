@@ -28,7 +28,7 @@ export const feedMapperForFeedModel = (feed: Feed): FeedModel => {
         userId: feed.userId,
         userName: feed.userName,
         content: feed.content,
-        createdAt: formatDate(feed.created, 'YYYY년 M월 d일 (E) aa H:mm', 'en_US'),
+        createdAt: formatDate(feed.created, 'YYYY년 M월 d일 (E) aa H:mm', 'ko'),
         tags: feed.tags,
         reply: feed.reply || [],
         feedImage: feed.image,

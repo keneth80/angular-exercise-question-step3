@@ -3,32 +3,36 @@
         <a href="../../docs/page/view-list.html">
             <img src="../../../../assets/images/logo.svg" alt="FAST CAMPUS">
         </a>
-    
+
         <ul class="gnb-list" data-login="true">
             <!-- 로그인시 -->
-            <li class="gnb-item menu-search">
-                <a href="../../docs/page/search.html" class="gnb-link">
-                    <img src="../../../../../assets/images/ico-search.svg" alt="검색하기">
-                </a>
-            </li>
-            <li class="gnb-item menu-write">
-                <a href="../../docs/page/write.html" class="gnb-link">
-                    <img src="../../../assets/images/ico-write.svg" alt="전체 피드">
-                </a>
-            </li>
-            <li class="gnb-item menu-user">
-                <a href="../../docs/page/view-thumb.html" class="gnb-link">
-                    <img src="../../../assets/images/img-user.png" alt="잔망루피님의 사진" class="user-img">
-                </a>
-            </li>
-    
+            <ng-template [ngIf]="userProfile" [ngIfElse]="notLogin">
+                <li class="gnb-item menu-search">
+                    <a href="../../docs/page/search.html" class="gnb-link">
+                        <img src="../../../../../assets/images/ico-search.svg" alt="검색하기">
+                    </a>
+                </li>
+                <li class="gnb-item menu-write">
+                    <a href="../../docs/page/write.html" class="gnb-link">
+                        <img src="../../../assets/images/ico-write.svg" alt="전체 피드">
+                    </a>
+                </li>
+                <li class="gnb-item menu-user">
+                    <a href="../../docs/page/view-thumb.html" class="gnb-link">
+                        <img src="../../../assets/images/img-user.png" class="user-img">
+                    </a>
+                </li>
+            </ng-template>
+
             <!-- 비로그인시 -->
-            <li class="gnb-item menu-login">
-                <a href="../../docs/page/login.html" class="gnb-link btn-small btn-solid-primary">로그인</a>
-            </li>
-            <li class="gnb-item menu-signup">
-                <a href="../../docs/page/signup.html" class="gnb-link">회원가입</a>
-            </li>
+            <ng-template #notLogin>
+                <li class="gnb-item menu-login">
+                    <a [routerLink]="['/login']" class="gnb-link btn-small btn-solid-primary">로그인</a>
+                </li>
+                <li class="gnb-item menu-signup">
+                    <a [routerLink]="['/enter']" class="gnb-link">회원가입</a>
+                </li>
+            </ng-template>
         </ul>
     </div>
 </nav>
