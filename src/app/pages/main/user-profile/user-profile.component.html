@@ -1,0 +1,24 @@
+<div class="top-section">
+    <div class="user-img-area">
+        <a href="../../docs/page/view-thumb.html">
+        <img class="user-img" src="../../assets/images/img-user.png" alt="">
+        </a>
+    </div>
+
+    <div class="user-info-area">
+        <p class="user-nickname">{{profile?.userNickName}}</p>
+        <!-- <p class="user-desc">소개말이 없습니다.</p> -->
+        <p class="user-desc">{{userDesciption}}</p>
+        <div class="user-count">
+        <p>게시물 <b>{{profile?.feedCount}}</b></p>
+        <p>열정지수 <b class="color-primary">{{profile?.passionIndex}}</b></p>
+        <p>관심사 <b>{{profile?.likeFeeds?.length}}</b></p>
+        </div>
+    </div>
+</div>
+
+<div class="user-interest-area">
+    <a *ngFor="let tag of tagList"
+        href="../../docs/page/search.html"
+        class="tag" [ngClass]="{'primary': tag.isTop}">{{tag.tagText}}</a>
+</div>

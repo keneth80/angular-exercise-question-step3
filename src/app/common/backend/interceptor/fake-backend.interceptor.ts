@@ -22,8 +22,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return authenticate();
                 case url.endsWith('/register') && method === 'POST':
                     return register();
-                case url.endsWith('/feed/register') && method === 'POST':
+                case url.endsWith('/feed') && method === 'POST':
                     return registerFeed();
+                case url.endsWith('/reply') && method === 'POST':
+                    return registerReply();
+                case url.endsWith('/reply') && method === 'GET':
+                    return getReplys();
                 case url.match(/\/user\/.*/) && method === 'GET':
                     return getUser();
                 case url.endsWith('/feeds') && method === 'GET':
@@ -77,6 +81,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             });
         };
 
+        const getReplys = () => {
+            return ok({
+                status: 200,
+                statusText: 'ok',
+                data: replys
+            });
+        };
+
         const getUser = () => {
             const urlValues = url.split('/');
             const userId = urlValues[urlValues.length - 1];
@@ -102,8 +114,17 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             feed.id = feeds.length ? Math.max(...feeds.map((feedObj: Feed) => feedObj.id)) + 1 : 1;
             feed.created = new Date().getTime();
             feeds.push(feed);
-            localStorage.setItem('feeds', JSON.stringify(feeds));
 
+            return ok();
+        };
+
+        const registerReply = () => {
+            if (!isLoggedIn()) return unauthorized();
+
+            const reply = body;
+            reply.id = replys.length ? Math.max(...replys.map((replyObj: Reply) => replyObj.id)) + 1 : 1;
+            reply.created = new Date().getTime();
+            replys.push(reply);
             return ok();
         };
 

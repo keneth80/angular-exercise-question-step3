@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, concatMap } from 'rxjs/operators';
 
 import { BaseService } from '../../services/base.service';
 import { GlobalVariableService } from '../../services/application/global-variable.service';
@@ -12,6 +12,8 @@ import { throwError, Observable, forkJoin } from 'rxjs';
 import { UserParam } from '../../models/params/user-param';
 import { Feed } from '../models/feed';
 import { FeedModel } from '../../models/feed.model';
+import { Reply } from '../models/reply';
+import { ReplyModel } from '../../models/reply.model';
 
 // backend api가 정의되는 service
 @Injectable({
@@ -78,5 +80,21 @@ export class FeedApiService extends BaseService {
             userInfo: this.getUserInfo(userId),
             feeds: this.getFeedList(userId)
         });
+    }
+
+    // reply 정보를 추가하고 갱신 된 리스트를 가져오기 위함.
+    addReply(reply: Reply): Observable<ReplyModel[]> {
+        const addUrl = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/reply`;
+        return this.http.post<BackendResponse>(addUrl, reply)
+            .pipe(
+                concatMap((response: BackendResponse) =>
+                    this.http.get<BackendResponse<Reply[]>>(`${this.globalVariableService.remoteUrl}${this.PRE_FIX}/reply`)
+                ),
+                map((response: BackendResponse<Reply[]>) => {
+                    console.log('response : ', response);
+                    const replyNodels: ReplyModel[] = [];
+                    return replyNodels;
+                })
+            );
     }
 }

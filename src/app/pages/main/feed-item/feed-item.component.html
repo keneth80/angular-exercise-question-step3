@@ -1,20 +1,39 @@
 <div class="feed-item">
     <div class="feed-header">
-        <a href="../../docs/page/view-thumb.html" class="flx-ac"><img src="../../../assets/images/img-user.png" alt="" class="user-img">잔망루피</a>
+        <a href="../../docs/page/view-thumb.html" class="flx-ac">
+            <img src="../../../assets/images/img-user.png" alt="" class="user-img">
+            {{feed?.userNickName}}
+        </a>
     </div>
     <div class="feed-body">
-        <img class="feed-img" src="../../../assets/images/img-dummy1.JPG" alt="">
+        <img class="feed-img" [src]="feed?.feedImage" alt="">
         <div class="feed-like">
-            <button class="btn-like">응원해요</button>
-            <span class="like-count">첫번째로 응원하기</span>
+            <ng-template [ngIf]="feed?.like" [ngIfElse]="notLike">
+                <button class="btn-like is-active">응원해요</button>
+                <span class="like-count">{{feed?.like}}명이 응원해요</span>
+            </ng-template>
+            <ng-template #notLike>
+                    <button class="btn-like">응원해요</button>
+                    <span class="like-count">첫번째로 응원하기</span>
+            </ng-template>
         </div>
-        <p class="feed-txt"></p>
-        <p class="feed-date">2021. 4. 17.</p>
+        <p class="feed-txt">{{feed?.content}}</p>
+        <p class="feed-date">{{feed?.createdAtShort}}</p>
     </div>
     <div class="feed-footer">
+        <div class="comment-area" *ngIf="feed?.reply?.length">
+            <ul class="comment-list">
+                <li class="comment-item" *ngFor="let reply of feed.reply">
+                    <a onclick="alert('친구의 페이지로 이동')" class="fw700">{{reply.userNickName}}</a>
+                    &nbsp;<span>{{reply.content}}</span>
+                </li>
+            </ul>
+        </div>
         <div class="comment-form">
-            <input class="comment-input" type="text" placeholder="댓글을 입력하세요.">
-            <button class="btn-comment color-primary" disabled>게시</button>
+            <input class="comment-input" [(ngModel)]="replyContent" type="text" placeholder="댓글을 입력하세요.">
+            <button class="btn-comment color-primary"
+                [disabled]="replyContent.length === 0"
+                (click)="onRegisterReply()">게시</button>
         </div>
     </div>
 </div>

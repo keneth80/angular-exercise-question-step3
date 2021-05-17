@@ -4,7 +4,7 @@ import { UserProfileModel } from '../../common/models/user-profile.model';
 import { Subscription } from 'rxjs';
 import { MainService, MainData } from './main.service';
 import { FeedModel } from '../../common/models/feed.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-main',
@@ -24,16 +24,20 @@ export class MainComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private authService: AuthenticationService,
         private mainService: MainService
     ) { }
 
     ngOnInit(): void {
         const routeParams = this.route.snapshot.paramMap;
-        // userId가 없다면 테스트 데이터인 admin으로 설정.
-        const userId = routeParams.get('userId') || 'admin';
+        // userId가 없다면 login page로 이동.
+        const userId = routeParams.get('userId');
         console.log('userId : ', userId);
-
+        if (!userId) {
+            this.router.navigate(['login']);
+            return;
+        }
         this.subscription.add(
             this.mainService.mainData$.subscribe((mainData: MainData) => {
                 console.log('feedList : ', mainData);
