@@ -5,10 +5,16 @@ import { MainComponent } from './main.component';
 import { FeedItemComponent } from './feed-item/feed-item.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SharedModule } from '../../common/modules/shared.module';
+import { PaginationComponent } from '../../common/components/pagination/pagination.component';
 
 
 @NgModule({
-    declarations: [MainComponent, FeedItemComponent, UserProfileComponent],
+    declarations: [
+        MainComponent,
+        FeedItemComponent,
+        UserProfileComponent,
+        PaginationComponent
+    ],
     imports: [
         SharedModule,
         MainRoutingModule

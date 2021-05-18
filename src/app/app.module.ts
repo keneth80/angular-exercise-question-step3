@@ -28,7 +28,7 @@ registerLocaleData(localeKo);
         FooterComponent, // footer 하단 영역
         GnbComponent, // 상단 영역
         SnackBarComponent, // snack bar component
-        SpinnerComponent // 로딩바 componenet
+        SpinnerComponent, // 로딩바 componenet
     ],
     imports: [
         BrowserModule,

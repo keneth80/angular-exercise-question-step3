@@ -33,19 +33,21 @@ export class MainComponent implements OnInit {
         const routeParams = this.route.snapshot.paramMap;
         // userId가 없다면 login page로 이동.
         const userId = routeParams.get('userId');
-        console.log('userId : ', userId);
         if (!userId) {
             this.router.navigate(['login']);
             return;
         }
         this.subscription.add(
             this.mainService.mainData$.subscribe((mainData: MainData) => {
-                console.log('feedList : ', mainData);
                 this.userProfile = mainData.userInfo;
                 this.feeds = mainData.feeds;
             })
         );
 
         this.mainService.getMainData(userId);
+    }
+
+    onPageChange(currentPage: number): void {
+        console.log('onPageChange : ', currentPage);
     }
 }

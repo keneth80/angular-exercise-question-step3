@@ -7,6 +7,9 @@ import { FeedModel } from '../models/feed.model';
 import { ReplyModel } from '../models/reply.model';
 import { Reply } from '../backend/models/reply';
 
+// angular date format에 대한 내용은 url을 참고한다.
+// https://angular.io/api/common/DatePipe
+
 export const userMapperForUserProfile = (user: User): UserProfileModel => {
     return user ? {
         id: user.id,

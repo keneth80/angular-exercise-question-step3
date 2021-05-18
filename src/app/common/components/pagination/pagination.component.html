@@ -1,0 +1,29 @@
+<div class="pagination-area">
+    <ul class="pagination-list">
+        <li class="pagination-item first">
+            <button [disabled]="!isFirst" (click)="onClickPage(1)">처음</button>
+        </li>
+        <li class="pagination-item prev">
+            <button [disabled]="!isPrev" (click)="onClickPage(currentPage = currentPage - 1)">이전</button>
+        </li>
+
+        <!-- <li class="pagination-item"><a class="pagination-link is-active">1</a></li>
+        <li class="pagination-item"><a class="pagination-link">2</a></li>
+        <li class="pagination-item"><a class="pagination-link">3</a></li>
+        <li class="pagination-item"><a class="pagination-link">4</a></li>
+        <li class="pagination-item"><a class="pagination-link">5</a></li> -->
+
+        <li class="pagination-item" *ngFor="let page of pages" (click)="onClickPage(page.label)">
+            <a class="pagination-link" [ngClass]="{'is-active': page.active}">
+                {{page.label}}
+            </a>
+        </li>
+
+        <li class="pagination-item next">
+            <button [disabled]="!isNext" (click)="onClickPage(currentPage = currentPage + 1)">다음</button>
+        </li>
+        <li class="pagination-item last">
+            <button [disabled]="!isLast" (click)="onClickPage(totalPage)">마지막</button>
+        </li>
+    </ul>
+</div>
