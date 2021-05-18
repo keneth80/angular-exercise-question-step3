@@ -8,6 +8,11 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'home',
+        redirectTo: '/login',
+        pathMatch: 'full'
+    },
+    {
         path: 'home/:userId',
         loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
     },

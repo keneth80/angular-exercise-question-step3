@@ -32,13 +32,13 @@ export class MainComponent implements OnInit {
     ngOnInit(): void {
         const routeParams = this.route.snapshot.paramMap;
         // userId가 없다면 login page로 이동.
-        const userId = routeParams.get('userId');
-        if (!userId) {
-            this.router.navigate(['login']);
-            return;
-        }
+        const userId = routeParams.get('userId') || '';
         this.subscription.add(
             this.mainService.mainData$.subscribe((mainData: MainData) => {
+                if (!this.userProfile) {
+                    this.router.navigate(['/login']);
+                    return;
+                }
                 this.userProfile = mainData.userInfo;
                 this.feeds = mainData.feeds;
             })
