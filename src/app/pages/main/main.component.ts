@@ -32,8 +32,8 @@ export class MainComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const routeParams = this.route.snapshot.paramMap;
         // userId가 없다면 login page로 이동.
-        const userId = routeParams.get('userId');
-        if (!userId) {
+        const userNickName = routeParams.get('userNickName');
+        if (!userNickName) {
             this.router.navigate(['/login']);
             return;
         }
@@ -44,7 +44,7 @@ export class MainComponent implements OnInit, OnDestroy {
             })
         );
 
-        this.mainService.getMainData(userId);
+        this.mainService.getMainData(userNickName);
     }
 
     ngOnDestroy(): void {

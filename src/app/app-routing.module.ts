@@ -13,7 +13,7 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'home/:userId',
+        path: 'home/:userNickName',
         loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
     },
     {
