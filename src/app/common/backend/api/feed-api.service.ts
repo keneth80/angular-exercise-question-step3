@@ -62,8 +62,8 @@ export class FeedApiService extends BaseService {
             );
     }
 
-    getUserInfo(userId: string): Observable<UserProfileModel> {
-        const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/user/${userId}`;
+    getUserInfo(userNickName: string): Observable<UserProfileModel> {
+        const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/user/${userNickName}`;
         return this.http.get<BackendResponse<User>>(url)
             .pipe(
                 map((response: BackendResponse<User>) => {

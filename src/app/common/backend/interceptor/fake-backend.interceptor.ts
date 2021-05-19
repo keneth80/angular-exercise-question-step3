@@ -90,11 +90,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         const getUser = () => {
             const urlValues = url.split('/');
-            const userId = urlValues[urlValues.length - 1];
+            const userNickName = urlValues[urlValues.length - 1];
             return ok({
                 status: 200,
                 statusText: 'ok',
-                data: users.find((user: User) => user.nickName === userId)
+                data: users.find((user: User) => user.nickName === userNickName)
             });
         };
 
