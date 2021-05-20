@@ -1,114 +1,13 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import './src/assets/scss/utils/_variables';
+@import './src/assets/scss/utils/_mixin_button';
+@import './src/assets/scss/utils/_mixin_common';
 
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* 순서 중요!! 미디어쿼리가 다른 임포트 파일보다 위에 있어야 합니다 */
-@mixin mobile-style {
-    @media (max-width: $breakpoint - 1) {
-        @content;
-    }
-}
-
-@mixin pc-style {
-    @media (min-width: $breakpoint) {
-        @content;
-    }
-}
-
-@mixin wide-style {
-    @media (min-width: $wide-breakpoint) {
-        @content;
-    }
-}
-
-// IE10+ 적용
-@mixin ie-style {
-    @media all and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-        @content;
-    }
-}
-
-@mixin ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-@mixin btnDefault($padding, $width, $height, $font, $weight: 500) {
-    display: inline-flex;
-    flex: 0 0 auto;
-    justify-content: center;
-    align-items: center;
-    padding: 0 $padding;
-    min-width: $width;
-    height: $height;
-    border-radius: 4px;
-    border: 0;
-    line-height: normal;
-    font-style: normal;
-    font-size: $font;
-    font-weight: $weight;
-    transition: background-color 0.25s, border 0.25s;
-    text-align: center;
-    white-space: nowrap;
-    cursor: pointer;
-    touch-action: manipulation;
-    outline: none;
-    user-select: none;
-    &:disabled {
-      cursor: not-allowed;
-    }
-}
-
-.btn-large {
-    @include btnDefault(24px, 100%, 48px, 16px, 700);
-}
-
-.btn-medium {
-    @include btnDefault(20px, 100px, 40px, 14px);
-}
-
-.btn-small {
-    @include btnDefault(8px, 56px, 32px, 12px);
-}
-
-.btn-large,
-    .btn-medium,
-    .btn-small {
-    &.no-min-w {
-        min-width: auto;
-    }
-}
-
-@mixin btnStyle($color) {
-    background-color: $color;
-    color: #fff;
-    &:not(:disabled){
-        &:hover,
-        &:focus {
-        background-color: mix(black, $color, 8%);
-        color: #fff;
-        }
-    }
-    &:disabled {
-        opacity: 0.3;
-    }
-}
-
-.btn-solid-primary {
-    @include btnStyle($primary);
-}
-
-.btn-solid-gray {
-    @include btnStyle($gray1);
-}
-
-.btn-solid-red {
-    @include btnStyle($red);
-}
 
 body {
     display: flex;
