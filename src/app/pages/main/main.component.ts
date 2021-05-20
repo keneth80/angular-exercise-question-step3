@@ -32,15 +32,15 @@ export class MainComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         const routeParams = this.route.snapshot.paramMap;
         // userId가 없다면 login page로 이동.
-        const userNickName = routeParams.get('userNickName');
-        if (!userNickName) {
-            this.router.navigate(['/login']);
-            return;
-        }
+        const userNickName = routeParams.get('userNickName') || '';
         this.subscription.add(
             this.mainService.mainData$.subscribe((mainData: MainData) => {
-                this.userProfile = mainData.userInfo;
-                this.feeds = mainData.feeds;
+                if (!mainData.userInfo?.userNickName || mainData.userInfo?.userNickName === '') {
+                    this.router.navigate(['/login']);
+                } else {
+                    this.userProfile = mainData.userInfo;
+                    this.feeds = mainData.feeds;
+                }
             })
         );
 
