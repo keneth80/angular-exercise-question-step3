@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ReplyModel } from '../../../common/models/reply.model';
 import { Subscription } from 'rxjs';
 import { GO_LOGIN_MESSAGE } from '../../../common/const';
+import { BaseComponent } from '../../../common/components/base.component';
 
 @Component({
     selector: 'app-feed-item',
@@ -17,7 +18,7 @@ import { GO_LOGIN_MESSAGE } from '../../../common/const';
     ],
     encapsulation: ViewEncapsulation.None,
 })
-export class FeedItemComponent implements OnInit, OnDestroy {
+export class FeedItemComponent extends BaseComponent implements OnInit, OnDestroy {
     @Input() feed: FeedModel;
 
     // ngmodel과 2way binding
@@ -29,31 +30,25 @@ export class FeedItemComponent implements OnInit, OnDestroy {
 
     private userProfile: UserProfileModel;
 
-    private subscription: Subscription = new Subscription();
-
     constructor(
         private router: Router,
         private feedItemService: FeedItemService,
         private authService: AuthenticationService
-    ) { }
+    ) {
+        super();
+    }
 
     ngOnInit(): void {
         this.feedLike = this.feed.like || 0;
-        this.subscription.add(
-            this.feedItemService.replyList$.subscribe((replys: ReplyModel[]) => {
-                this.replyContent = '';
-                this.feed.reply = replys;
-            })
-        );
+        this.subscription = this.feedItemService.replyList$.subscribe((replys: ReplyModel[]) => {
+            this.replyContent = '';
+            this.feed.reply = replys;
+        });
 
         // login 여부 체크
         if (this.authService.userModel.userEmail) {
             this.userProfile = this.authService.userModel;
         }
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 
     onRegisterReply(): void {

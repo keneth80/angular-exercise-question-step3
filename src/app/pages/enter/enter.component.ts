@@ -6,23 +6,24 @@ import { SpinnerService } from '../../common/components/spinner/spinner.service'
 import { ConfirmValidator } from '../../common/validators/confirm.validator';
 import { Subscription } from 'rxjs';
 import { REGISTER_COMPLETE_MESSAGE } from '../../common/const';
+import { BaseComponent } from '../../common/components/base.component';
 
 @Component({
     selector: 'app-enter',
     templateUrl: './enter.component.html',
     styleUrls: ['./enter.component.scss']
 })
-export class EnterComponent implements OnInit, OnDestroy {
+export class EnterComponent extends BaseComponent implements OnInit {
     enterForm: FormGroup;
-
-    private subscription: Subscription = new Subscription();
 
     constructor(
         private fb: FormBuilder,
         private authService: AuthenticationService,
         private router: Router,
         private spinner: SpinnerService
-    ) { }
+    ) {
+        super();
+    }
 
     get formItems() {
         return this.enterForm.controls;
@@ -50,10 +51,6 @@ export class EnterComponent implements OnInit, OnDestroy {
             alert(REGISTER_COMPLETE_MESSAGE);
             this.router.navigate(['/login']);
         });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
     }
 
     onEnterSubmit(): void {

@@ -5,16 +5,15 @@ import { Subscription } from 'rxjs';
 import { UserProfileModel } from '../../common/models/user-profile.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SpinnerService } from '../../common/components/spinner/spinner.service';
+import { BaseComponent } from '../../common/components/base.component';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent extends BaseComponent implements OnInit {
     loginForm: FormGroup;
-
-    private subscription: Subscription = new Subscription();
 
     constructor(
         private fb: FormBuilder,
@@ -22,7 +21,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private spinner: SpinnerService
-    ) {}
+    ) {
+        super();
+    }
 
     get formItems() {
         return this.loginForm.controls;
@@ -44,23 +45,16 @@ export class LoginComponent implements OnInit, OnDestroy {
         const returnUrl = this.route.snapshot.queryParams['returnUrl'];
 
         // user model에 대해 구독.
-        this.subscription.add(
-            this.authService.userModel$.subscribe((userModel: UserProfileModel) => {
-                if (userModel.userEmail) {
-                    this.spinner.stop();
-                    if (returnUrl) {
-                        this.router.navigate([returnUrl]);
-                    } else {
-                        this.router.navigate(['/home/' + userModel.userNickName]);
-                    }
+        this.subscription = this.authService.userModel$.subscribe((userModel: UserProfileModel) => {
+            if (userModel.userEmail) {
+                this.spinner.stop();
+                if (returnUrl) {
+                    this.router.navigate([returnUrl]);
+                } else {
+                    this.router.navigate(['/home/' + userModel.userNickName]);
                 }
-            })
-        );
-    }
-
-    ngOnDestroy(): void {
-        // component destory 시 구독해제
-        this.subscription.unsubscribe();
+            }
+        });
     }
 
     onLoginSubmit(): void {
