@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FeedSearchService } from './feed-search.service';
-import { FeedModel } from '../../common/models/feed.model';
+import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+
+import { FeedSearchService } from './feed-search.service';
+import { FeedModel } from '../../common/models/feed.model';
 import { BaseComponent } from '../../common/components/base.component';
 import { DialogService } from '../../common/services/dialog/dialog.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-feed-search',
