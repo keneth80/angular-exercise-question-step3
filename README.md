@@ -2,6 +2,16 @@
 
 Q. 구글에서 개발한 frontend framework인 angular로 web application을 구현해보자.
 
+q1. my 피드 리스트 페이지를 로그인이 되어있을 경우에만 볼수 있도록 구현하시오.
+
+q2. mypage controller를 완성하시오.
+
+q3. layer popup을 출력하는 dialog service를 완성하시오.
+
+q4. dialog container component 에 컴포넌트를 동적으로 출력하도록 완성하시오.
+
+q5. 검색어 검색 시 검색어 입력을 debounce 기능을 이용하여 검색결과를 출력하시오.
+
 ## 기능요구사항 및 기획
 
 ![image](https://user-images.githubusercontent.com/12759765/115124670-5d414400-9ffe-11eb-8854-cc297ecb2969.png)
