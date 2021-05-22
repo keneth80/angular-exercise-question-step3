@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
     providers: [
         FeedSearchService
     ],
-  encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class FeedSearchComponent extends BaseComponent implements OnInit {
     feeds: FeedModel[] = [];
