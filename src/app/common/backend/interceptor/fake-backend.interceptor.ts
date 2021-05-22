@@ -32,8 +32,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return getUser();
                 case url.match(/\/feeds\/.*/) && method === 'GET':
                     return getFeeds();
-                case url.endsWith('/search') && method === 'GET':
-                    return searchFeeds();
+                case url.match(/\/feedsearch\/.*/) && method === 'GET':
+                    return getFeedsByTagName();
                 default:
                     // pass through any requests not handled above
                     return next.handle(request);
@@ -78,6 +78,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             });
         };
 
+        const getFeedsByTagName = () => {
+            const urlValues = url.split('/');
+            const tagName = urlValues[urlValues.length - 1].toLocaleLowerCase();
+            console.log('getFeedsByTagName : ', tagName);
+            return ok({
+                status: 200,
+                statusText: 'ok',
+                data: feeds.filter((feed: Feed) => feed.tags.split(',')
+                    .map((tag: string) => tag.toLocaleLowerCase()).includes('#' + tagName))
+            });
+        };
+
         const getReplys = () => {
             const urlValues = url.split('/');
             const feedId = +urlValues[urlValues.length - 1];
@@ -98,19 +110,21 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             });
         };
 
-        const searchFeeds = () => {
-            const { tag } = body;
-            const feedFilter = feeds.filter((feedObj: Feed) => feedObj.tags.includes(tag));
-            return ok(feedFilter);
-        };
-
         const registerFeed = () => {
-            if (!isLoggedIn()) return unauthorized();
-
             const feed = body;
-            feed.id = feeds.length ? Math.max(...feeds.map((feedObj: Feed) => feedObj.id)) + 1 : 1;
-            feed.created = new Date().getTime();
-            feeds.push(feed);
+            const targetUser: User | undefined = users.find((userObj: User) => userObj.nickName = feed.userNickName);
+            if (!targetUser) {
+                return error('Unauthorised');
+            }
+            const newFeed: any = {};
+            newFeed.id = feeds.length ? Math.max(...feeds.map((feedObj: Feed) => feedObj.id)) + 1 : 1;
+            newFeed.created = new Date().getTime();
+            newFeed.image = feed.feedImage;
+            newFeed.content = feed.feedContent;
+            newFeed.userId = targetUser.id;
+            newFeed.nickName = targetUser.nickName;
+            newFeed.userName = targetUser.name;
+            feeds.push(newFeed);
 
             return ok();
         };

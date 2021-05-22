@@ -2,16 +2,23 @@
     <div class="common-inner">
         <div class="form-content">
         <div class="img-preview-area">
-            <!-- 사진 추가 전  -->
-            <label for="img-upload" class="txt-preview">여기를 눌러 이미지를 등록하세요.</label>
+                <ng-container [ngSwitch]="base64String.length">
+                    <ng-container *ngSwitchCase="0">
+                        <!-- 사진 추가 전  -->
+                        <label for="img-upload" class="txt-preview">여기를 눌러 이미지를 등록하세요.</label>
+                    </ng-container>
 
-            <!-- 사진 추가 후 -->
-            <!-- <img src="../../assets/images/img-dummy1.JPG" alt="" class="img-preview"> -->
+                    <ng-container *ngSwitchDefault>
+                        <!-- 사진 추가 후 -->
+                        <img [src]="base64String" alt="" class="img-preview">
+                    </ng-container>
+                </ng-container>
         </div>
         <div class="form-area">
-            <input id="img-upload" class="form-file" type="file">
-            <textarea class="form-textarea" placeholder="사진에 대한 설명을 적어주세요."></textarea>
-            <button class="btn-large btn-solid-primary">등록</button>
+            <input id="img-upload" class="form-file" type="file" (change)="onFileSelect($event)">
+            <textarea class="form-textarea" placeholder="사진에 대한 설명을 적어주세요."
+                [(ngModel)]="feedContent"></textarea>
+            <button class="btn-large btn-solid-primary" (click)="onSubmitFeedWrite()">등록</button>
         </div>
         </div>
     </div>

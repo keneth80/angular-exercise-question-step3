@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/feed-search/feed-search.module').then(m => m.FeedSearchModule)
     },
     {
+        path: 'feed-search/:tag',
+        loadChildren: () => import('./pages/feed-search/feed-search.module').then(m => m.FeedSearchModule)
+    },
+    {
         path: 'mypage',
         loadChildren: () => import('./pages/my-page/my-page.module').then(m => m.MyPageModule)
     },

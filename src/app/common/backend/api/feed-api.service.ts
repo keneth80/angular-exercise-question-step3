@@ -62,6 +62,24 @@ export class FeedApiService extends BaseService {
             );
     }
 
+    getFeedListByTagName(tagName: string): Observable<FeedModel[]> {
+        const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/feedsearch/${tagName}`;
+        return this.http.get<BackendResponse<Array<Feed>>>(url)
+            .pipe(
+                map((response: BackendResponse<Array<Feed>>) => {
+                    const feeds: FeedModel[] = [];
+                    if (response.data && response.data.length) {
+                        for (const feed of response.data) {
+                            feeds.push(
+                                feedMapperForFeedModel(feed)
+                            );
+                        }
+                    }
+                    return feeds;
+                })
+            );
+    }
+
     getUserInfo(userNickName: string): Observable<UserProfileModel> {
         const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/user/${userNickName}`;
         return this.http.get<BackendResponse<User>>(url)
@@ -102,5 +120,19 @@ export class FeedApiService extends BaseService {
                     return replyNodels;
                 })
             );
+    }
+
+    addFeed(userNickName: string, feedImage: string, feedContent: string): Observable<boolean> {
+        const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/feed`;
+        return this.http.post<BackendResponse>(url, {
+            feedImage,
+            feedContent,
+            userNickName
+        })
+        .pipe(
+            map((response: BackendResponse) => {
+                return true;
+            })
+        );
     }
 }

@@ -19,6 +19,6 @@
 
 <div class="user-interest-area">
     <a *ngFor="let tag of tagList"
-        href="../../docs/page/search.html"
-        class="tag" [ngClass]="{'primary': tag.isTop}">{{tag.tagText}}</a>
+        class="tag" [ngClass]="{'primary': tag.isTop}"
+        (click)="onGoSearchPage(tag.tagText)">{{tag.tagText}}</a>
 </div>
