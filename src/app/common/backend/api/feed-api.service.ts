@@ -44,8 +44,8 @@ export class FeedApiService extends BaseService {
         return this.http.post<BackendResponse<any>>(url, param);
     }
 
-    getFeedList(userId: string): Observable<FeedModel[]> {
-        const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/feeds/${userId}`;
+    getFeedList(userNickName: string): Observable<FeedModel[]> {
+        const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/feeds/${userNickName}`;
         return this.http.get<BackendResponse<Array<Feed>>>(url)
             .pipe(
                 map((response: BackendResponse<Array<Feed>>) => {

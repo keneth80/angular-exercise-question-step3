@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { PageEvent } from '../../models/event/page-event';
 
 interface Page {
     label: number;
@@ -17,7 +18,7 @@ export class PaginationComponent implements OnInit, OnChanges {
     @Input() dataPerPage = 5;
     @Input() pageCount = 5;
 
-    @Output() pageChange: EventEmitter<number> = new EventEmitter();
+    @Output() pageChange: EventEmitter<PageEvent> = new EventEmitter();
 
     pages: Page[] = [];
     isFirst = false;
@@ -47,7 +48,10 @@ export class PaginationComponent implements OnInit, OnChanges {
 
     onClickPage(page: number): void {
         this.currentPage = page;
-        this.pageChange.emit(this.currentPage);
+        this.pageChange.emit({
+            currentPage: this.currentPage,
+            totalCount: this.totalCount
+        });
         this.setPageNation();
     }
 

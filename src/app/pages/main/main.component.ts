@@ -6,6 +6,7 @@ import { MainService, MainData } from './main.service';
 import { FeedModel } from '../../common/models/feed.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from '../../common/components/base.component';
+import { PageEvent } from '../../common/models/event/page-event';
 
 @Component({
     selector: 'app-main',
@@ -46,7 +47,7 @@ export class MainComponent extends BaseComponent implements OnInit {
         this.mainService.getMainData(userNickName);
     }
 
-    onPageChange(currentPage: number): void {
+    onPageChange(currentPage: PageEvent): void {
         console.log('onPageChange : ', currentPage);
     }
 }

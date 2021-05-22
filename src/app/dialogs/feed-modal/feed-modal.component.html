@@ -1,0 +1,49 @@
+<div class="view-modal-area">
+    <div class="dimmed-layer" (click)="onModalClose()"></div>
+
+    <div class="modal-container">
+        <svg aria-label="닫기" (click)="onModalClose()" class="btn-close " fill="#000" height="24" viewBox="0 0 48 48" width="24"><path clip-rule="evenodd" d="M41.8 9.8L27.5 24l14.2 14.2c.6.6.6 1.5 0 2.1l-1.4 1.4c-.6.6-1.5.6-2.1 0L24 27.5 9.8 41.8c-.6.6-1.5.6-2.1 0l-1.4-1.4c-.6-.6-.6-1.5 0-2.1L20.5 24 6.2 9.8c-.6-.6-.6-1.5 0-2.1l1.4-1.4c.6-.6 1.5-.6 2.1 0L24 20.5 38.3 6.2c.6-.6 1.5-.6 2.1 0l1.4 1.4c.6.6.6 1.6 0 2.2z" fill-rule="evenodd"></path></svg>
+        <div class="modal-content">
+            <div class="feed-item">
+                <div class="feed-header">
+                    <a class="flx-ac">
+                        <img src="/assets/images/img-user.png" alt="" class="user-img">
+                        {{feed?.userNickName}}
+                    </a>
+                </div>
+                <div class="feed-body">
+                    <img class="feed-img" [src]="feed?.feedImage" alt="">
+                    <div class="feed-like">
+                        <ng-template [ngIf]="feedLike > 0" [ngIfElse]="notLike">
+                            <button class="btn-like is-active" (click)="onLike()">응원해요</button>
+                            <span class="like-count">{{feedLike}}명이 응원해요</span>
+                        </ng-template>
+                        <ng-template #notLike>
+                                <button class="btn-like" (click)="onLike()">응원해요</button>
+                                <span class="like-count">첫번째로 응원하기</span>
+                        </ng-template>
+                    </div>
+                    <p class="feed-txt">{{feed?.content}}</p>
+                    <p class="feed-date">{{feed?.createdAtShort}}</p>
+                </div>
+                <div class="feed-footer">
+                    <div class="comment-area" *ngIf="feed?.reply?.length">
+                        <ul class="comment-list">
+                            <li class="comment-item" *ngFor="let reply of feed.reply">
+                                <a onclick="alert('친구의 페이지로 이동')" class="fw700">{{reply.userNickName}}</a>
+                                &nbsp;<span>{{reply.content}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="comment-form">
+                        <input class="comment-input" [(ngModel)]="replyContent" type="text" placeholder="댓글을 입력하세요.">
+                        <button class="btn-comment color-primary"
+                            [disabled]="replyContent.length === 0"
+                            (click)="onRegisterReply()">게시</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

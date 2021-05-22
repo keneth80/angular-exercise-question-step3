@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserProfileModel } from '../../../common/models/user-profile.model';
 import { EMPTY_USER_DESCRIPTION_MESSAGE } from '../../../common/const';
 
@@ -10,7 +10,8 @@ interface Tag {
 @Component({
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
-    styleUrls: ['./user-profile.component.scss']
+    styleUrls: ['./user-profile.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class UserProfileComponent implements OnInit {
     @Input() profile: UserProfileModel;
