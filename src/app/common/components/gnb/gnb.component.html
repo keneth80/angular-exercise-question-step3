@@ -8,12 +8,12 @@
             <!-- 로그인시 -->
             <ng-template [ngIf]="userProfile" [ngIfElse]="notLogin">
                 <li class="gnb-item menu-search">
-                    <a href="../../docs/page/search.html" class="gnb-link">
+                    <a [routerLink]="['/feed-search']" class="gnb-link">
                         <img src="../../../../../assets/images/ico-search.svg" alt="검색하기">
                     </a>
                 </li>
                 <li class="gnb-item menu-write">
-                    <a href="../../docs/page/write.html" class="gnb-link">
+                    <a [routerLink]="['/feed-write']" class="gnb-link">
                         <img src="../../../assets/images/ico-write.svg" alt="전체 피드">
                     </a>
                 </li>

@@ -17,6 +17,14 @@ const routes: Routes = [
         loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule)
     },
     {
+        path: 'feed-write',
+        loadChildren: () => import('./pages/feed-write/feed-write.module').then(m => m.FeedWriteModule)
+    },
+    {
+        path: 'feed-search',
+        loadChildren: () => import('./pages/feed-search/feed-search.module').then(m => m.FeedSearchModule)
+    },
+    {
         path: 'mypage',
         loadChildren: () => import('./pages/my-page/my-page.module').then(m => m.MyPageModule)
     },
