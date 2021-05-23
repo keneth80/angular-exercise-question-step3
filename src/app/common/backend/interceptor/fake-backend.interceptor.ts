@@ -81,7 +81,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         const getFeedsByTagName = () => {
             const urlValues = url.split('/');
             const tagName = urlValues[urlValues.length - 1].toLocaleLowerCase();
-            console.log('getFeedsByTagName : ', tagName);
             return ok({
                 status: 200,
                 statusText: 'ok',
