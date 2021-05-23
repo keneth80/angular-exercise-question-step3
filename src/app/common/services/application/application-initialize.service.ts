@@ -7,8 +7,7 @@ import { AppInjector } from './app-injector.service';
 })
 export class ApplicationInitializeService {
     constructor(
-        private injector: Injector,
-        // private samplApiService: SamplApiService
+        private injector: Injector
     ){ }
 
     load(): Promise<any> {
