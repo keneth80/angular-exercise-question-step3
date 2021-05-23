@@ -33,16 +33,16 @@ export class MyPageComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // user 정보 연결
-        this.userProfile = this.authService.userModel;
-        this.subscription = this.myPageService.myPageThumbs$.subscribe((feeds: FeedModel[]) => {
-            this.feeds = feeds;
-        });
+        // user 정보 연결 (구현 전 error가 나와서 막아둠.)
+        // this.userProfile = this.authService.userModel;
+        // this.subscription = this.myPageService.myPageThumbs$.subscribe((feeds: FeedModel[]) => {
+        //     this.feeds = feeds;
+        // });
 
-        // component에서 로그인 여부 처리 할때
-        if (this.userProfile?.userNickName) {
-            this.myPageService.getMyPageThumb(this.userProfile?.userNickName);
-        }
+        // // component에서 로그인 여부 처리 할때
+        // if (this.userProfile?.userNickName) {
+        //     this.myPageService.getMyPageThumb(this.userProfile?.userNickName);
+        // }
     }
 
     onOpenFeedModal(feed: FeedModel): void {

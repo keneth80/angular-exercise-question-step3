@@ -4,22 +4,12 @@ import { Subject, Observable } from 'rxjs';
 import { FeedModel } from '../../common/models/feed.model';
 import { UserProfileModel } from '../../common/models/user-profile.model';
 
+// q2. mypage controller를 완성하시오. (this.apiService.getFeedList를 참조한다.)
+// TODO: Write JS code here!'
 @Injectable()
 export class MyPageService {
-    private myPageThumbsSubject: Subject<FeedModel[]> = new Subject();
-
     constructor(
         private apiService: FeedApiService
     ) {
-    }
-
-    get myPageThumbs$(): Observable<FeedModel[]> {
-        return this.myPageThumbsSubject.asObservable();
-    }
-
-    getMyPageThumb(userNickName: string) {
-        this.apiService.getFeedList(userNickName).subscribe((feedList: FeedModel[]) => {
-            this.myPageThumbsSubject.next(feedList);
-        });
     }
 }

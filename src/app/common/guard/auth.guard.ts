@@ -8,13 +8,9 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router,
                 private authenticationService: AuthenticationService) { }
 
+    // q1. my 피드 리스트 페이지를 로그인이 되어있을 경우에만 볼수 있도록 구현하시오.
+    // TODO: Write JS code here!'
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.authenticationService.userModel.userEmail) {
-            return true;
-        }
-
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-        return false;
+        return true;
     }
 }

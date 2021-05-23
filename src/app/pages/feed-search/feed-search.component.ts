@@ -33,14 +33,8 @@ export class FeedSearchComponent extends BaseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.subscription = this.searchEnter$.pipe(
-            map((searchText: string) => searchText ? searchText.trim() : ''), // 검색어 공백처리
-            filter((searchText: string) => searchText !== ''), // 문자가 있는 경우에만 처리
-            debounceTime(600), // debounce 처리
-            distinctUntilChanged() // 이전 값과 다른경우에만
-        ).subscribe((searchText: string) => {
-            this.feedSearchService.getFeedSearch(searchText);
-        });
+        // q5. 검색어 검색 시 검색어 입력을 debounce 기능을 이용하여 검색결과를 출력하시오.
+        // TODO: Write JS code here!'
 
         this.subscription = this.feedSearchService.feedList$.subscribe((feeds: FeedModel[]) => {
             this.feeds = feeds;

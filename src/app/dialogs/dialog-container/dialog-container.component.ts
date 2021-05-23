@@ -22,29 +22,15 @@ export class DialogContainerComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        // q4. dialog container component 에 컴포넌트를 동적으로 출력하도록 완성하시오.
+        // TODO: Write JS code here!'
         this.dialogService.modal$.subscribe((event: ModalEvent) => {
-            if (event.type === ModalType.FEED) {
-                this.loadFeedDetail(event.data);
-            } else {
-                this.modalDestroy();
-            }
+
         });
     }
 
-    async loadFeedDetail(feed: FeedModel) {
-        const viewContainerRef = this.adHost.viewContainerRef;
-        viewContainerRef.clear();
+    loadFeedDetail(feed: FeedModel) {
 
-        const dialogRef = viewContainerRef.createComponent(
-            this.cfr.resolveComponentFactory(FeedModalComponent)
-        );
-        const dialogInstance = dialogRef.instance;
-        dialogInstance.feed = feed;
-    }
-
-    modalDestroy() {
-        const viewContainerRef = this.adHost.viewContainerRef;
-        viewContainerRef.clear();
     }
 
 }

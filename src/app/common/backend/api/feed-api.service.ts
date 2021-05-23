@@ -29,6 +29,7 @@ export class FeedApiService extends BaseService {
         super();
     }
 
+    // 로그인
     login(email: string, password: string): Observable<UserProfileModel> {
         const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/authenticate`;
         return this.http.post<BackendResponse<User>>(url, { email, password })
@@ -39,11 +40,13 @@ export class FeedApiService extends BaseService {
             );
     }
 
+    // 회원 가입
     enter(param: UserParam) {
         const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/register`;
         return this.http.post<BackendResponse<any>>(url, param);
     }
 
+    // user의 feed list 가져오기.
     getFeedList(userNickName: string): Observable<FeedModel[]> {
         const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/feeds/${userNickName}`;
         return this.http.get<BackendResponse<Array<Feed>>>(url)
@@ -62,6 +65,7 @@ export class FeedApiService extends BaseService {
             );
     }
 
+    // tag에 속한 feed 리스트 가져오기
     getFeedListByTagName(tagName: string): Observable<FeedModel[]> {
         const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/feedsearch/${tagName}`;
         return this.http.get<BackendResponse<Array<Feed>>>(url)
@@ -80,6 +84,7 @@ export class FeedApiService extends BaseService {
             );
     }
 
+    // user 정보 가져오기
     getUserInfo(userNickName: string): Observable<UserProfileModel> {
         const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/user/${userNickName}`;
         return this.http.get<BackendResponse<User>>(url)
@@ -90,6 +95,7 @@ export class FeedApiService extends BaseService {
             );
     }
 
+    // 유저 홈 페이지의 데이터 가져오기
     getMainData(userId: string): Observable<{
         userInfo: any,
         feeds: any
@@ -122,6 +128,7 @@ export class FeedApiService extends BaseService {
             );
     }
 
+    // feed 추가
     addFeed(userNickName: string, feedImage: string, feedContent: string): Observable<boolean> {
         const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/feed`;
         return this.http.post<BackendResponse>(url, {
