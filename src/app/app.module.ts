@@ -18,10 +18,7 @@ import { NotificationService } from './common/services/notification/notification
 import { AppComponent } from './app.component';
 import { FooterComponent } from './common/components/footer/footer.component';
 import { GnbComponent } from './common/components/gnb/gnb.component';
-import { SpinnerComponent } from './common/components/spinner/spinner.component';
-import { SnackBarComponent } from './common/components/snack-bar/snack-bar.component';
-import { PaginationComponent } from './common/components/pagination/pagination.component';
-import { UserProfileComponent } from './common/components/user-profile/user-profile.component';
+
 import { ComponentModule } from './common/components/component.module';
 import { GuardModule } from './common/guard/guard.module';
 import { DialogModule } from './dialogs/dialog.module';
