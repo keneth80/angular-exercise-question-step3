@@ -26,6 +26,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return registerFeed();
                 case url.endsWith('/reply') && method === 'POST':
                     return registerReply();
+                case url.endsWith('/like') && method === 'POST':
+                    return registerReply();
                 case url.match(/\/reply\/.*/) && method === 'GET':
                     return getReplys();
                 case url.match(/\/user\/.*/) && method === 'GET':
@@ -133,6 +135,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             reply.id = replys.length ? Math.max(...replys.map((replyObj: Reply) => replyObj.id)) + 1 : 1;
             reply.created = new Date().getTime();
             replys.push(reply);
+            return ok();
+        };
+
+        const applyLike = () => {
             return ok();
         };
 

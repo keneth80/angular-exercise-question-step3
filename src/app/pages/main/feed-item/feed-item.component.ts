@@ -76,14 +76,17 @@ export class FeedItemComponent extends BaseComponent implements OnInit, OnDestro
         }
 
         if (this.userProfile.likeFeeds) {
-            const likeIndex = this.userProfile.likeFeeds.findIndex((like: string) => +like === this.feed.id);
-            if (likeIndex < 0) {
-                this.userProfile.likeFeeds.push(this.feed.id + '');
-                this.feedLike++;
-            } else {
-                this.userProfile.likeFeeds.splice(likeIndex, 1);
-                this.feedLike--;
-            }
+            const likeFeeds = this.userProfile.likeFeeds;
+            const likeIndex = likeFeeds.findIndex((like: string) => +like === this.feed.id);
+            this.feedItemService.applyLike(this.feed.id, likeIndex < 0, () => {
+                if (likeIndex < 0) {
+                    likeFeeds.push(this.feed.id + '');
+                    this.feedLike++;
+                } else {
+                    likeFeeds.splice(likeIndex, 1);
+                    this.feedLike--;
+                }
+            });
         }
     }
 

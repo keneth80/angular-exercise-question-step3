@@ -142,4 +142,9 @@ export class FeedApiService extends BaseService {
             })
         );
     }
+
+    applyLike(feedId: number, isLike: boolean): Observable<any> {
+        const url = `${this.globalVariableService.remoteUrl}${this.PRE_FIX}/like`;
+        return this.http.post<BackendResponse<any>>(url, {feedId, isLike});
+    }
 }

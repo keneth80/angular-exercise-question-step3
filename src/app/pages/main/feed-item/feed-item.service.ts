@@ -23,4 +23,10 @@ export class FeedItemService {
             this.replyListSubject.next(result);
         });
     }
+
+    applyLike(feedId: number, isLike: boolean, resultCallBack: any) {
+        this.apiService.applyLike(feedId, isLike).subscribe((result: boolean) => {
+            resultCallBack(result);
+        });
+    }
 }
