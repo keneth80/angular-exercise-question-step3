@@ -40,6 +40,8 @@ export class FeedSearchComponent extends BaseComponent implements OnInit {
             this.feeds = feeds;
         });
 
+        // url param에서 tag 정보를 가져온다.
+        // tag 정보가있다면 검색 api를 호출한다.
         const routeParams = this.route.snapshot.paramMap;
         const tagName = routeParams.get('tag');
         if (tagName) {
