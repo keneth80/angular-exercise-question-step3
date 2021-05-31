@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../common/services/authentication/auth
 import { BaseComponent } from '../../common/components/base.component';
 import { ReplyModel } from '../../common/models/reply.model';
 import { FeedModalService } from './feed-modal.service';
+import { LESS_TEXT, MORE_TEXT } from '../../common/const';
 
 @Component({
     selector: 'app-feed-modal',
@@ -27,6 +28,15 @@ export class FeedModalComponent extends BaseComponent implements OnInit {
     // 객체의 특정 값의 변경에 따라 템플릿을 적용해야할 경우에는 따로 변수를 선언하는게 낫다.
     feedLike = 0;
 
+    // tag list
+    tags: string[] = [];
+
+    // feed content 요약글
+    feedContent = '';
+
+    // feed content에서 요약보기 더보기 flag
+    isMoreContent = true;
+
     constructor(
         private dialogService: DialogService,
         private router: Router,
@@ -38,6 +48,12 @@ export class FeedModalComponent extends BaseComponent implements OnInit {
 
     ngOnInit(): void {
         this.feedLike = this.feed.like || 0;
+
+        // parse 하여 템플릿에 바인딩.
+        this.tags = this.feed.tags ? this.feed.tags.split(',') : [];
+
+        // 더보기 기능을 위해 임시로 텍스트를 자름.
+        this.feedContent = this.feed.content.substring(0, 15);
 
         this.subscription = this.feedModalService.replyList$.subscribe((replys: ReplyModel[]) => {
             this.replyContent = '';
@@ -74,6 +90,27 @@ export class FeedModalComponent extends BaseComponent implements OnInit {
                 this.authService.userModel.likeFeeds.splice(likeIndex, 1);
                 this.feedLike--;
             }
+        }
+    }
+
+    onGoUserPage(userNickName: string) {
+        this.dialogService.close();
+        this.router.navigate(['/home/' + userNickName]);
+    }
+
+    onGoSearchPage(tag: string) {
+        this.dialogService.close();
+        this.router.navigate(['/feed-search/' + tag.substring(1, tag.length)]);
+    }
+
+    onMoreContent(event: any) {
+        this.isMoreContent = !this.isMoreContent;
+        if (!this.isMoreContent) {
+            event.target.innerText = LESS_TEXT;
+            this.feedContent = this.feed.content;
+        } else {
+            event.target.innerText = MORE_TEXT;
+            this.feedContent = this.feed.content.substring(0, 15) + '...';
         }
     }
 

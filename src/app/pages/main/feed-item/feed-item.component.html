@@ -18,8 +18,11 @@
             </ng-template>
         </div>
         <p class="feed-txt">
-            {{feed?.content}}
+            {{feedContent}}
             &nbsp;
+            <button (click)="onMoreContent($event)">+더보기</button>
+            &nbsp;
+            <a class="tag" *ngFor="let tag of tags" (click)="onGoSearchPage(tag)">{{tag}}</a>
         </p>
         <p class="feed-date">{{feed?.createdAtShort}}</p>
     </div>
@@ -27,7 +30,7 @@
         <div class="comment-area" *ngIf="feed?.reply?.length">
             <ul class="comment-list">
                 <li class="comment-item" *ngFor="let reply of feed.reply">
-                    <a onclick="alert('친구의 페이지로 이동')" class="fw700">{{reply.userNickName}}</a>
+                    <a (click)="onGoUserPage(reply.userNickName)" class="fw700">{{reply.userNickName}}</a>
                     &nbsp;<span>{{reply.content}}</span>
                 </li>
             </ul>
